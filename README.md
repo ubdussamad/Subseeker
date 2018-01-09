@@ -14,6 +14,6 @@ As if now , it only downloads English subtitles but language support will be add
 
 <li>Nautilus Action Config Tool </li>
 
-
-Total size including Nautilus Action Config Tool: ~ 13 MegaBytes
-Total size excluding Nautilus Action Config Tool: ~ 30 KiloBytes
+<b>Size Information:</b>
+<li>Total size including Nautilus Action Config Tool: ~ 13 MegaBytes</li>
+<li>Total size excluding Nautilus Action Config Tool: ~ 30 KiloBytes </li>
