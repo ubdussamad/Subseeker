@@ -22,7 +22,7 @@ As if now, it only downloads English subtitles but language support will be adde
 </br></hr>
 <b>Size Information:</b>
 <li>Total size including Nautilus Action Config Tool: ~ 13 MegaBytes</li>
-<li>Total size excluding Nautilus Action Config Tool: ~ 30 KiloBytes </li>
+<li>Total size excluding Nautilus Action Config Tool: ~ 140 KiloBytes </li>
 </br>
 </br>
 <b> Installation Procedure: </b>
@@ -39,7 +39,7 @@ As if now, it only downloads English subtitles but language support will be adde
 
 <li> In explorer (File manager window of subseeker folder) , right click and select 'Open in Terminal'.</li>
 
-<li> In the terminal Window type: <code>$ sudo python3 Install.py</code>. (Without Quotes)</li>
+<li> In the terminal Window type: <code>$ sudo python3 Install.py</code></li>
 
 <li> Enter 'y' if asked to install Dependencies.(external utility packages.)</li>
 
