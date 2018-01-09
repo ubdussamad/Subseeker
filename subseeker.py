@@ -170,6 +170,7 @@ except:
             \n * Internet Connection problem.
             \n * The video is not popular (A recorded video or A music video).
             \n\n All of the above reasons could introduce this error!
+            \n   Contact ubdussamad at_the_rate gmail _.com , To report any persistent Error.
             \n ||Thanks for using Subseeker ||'''%(full_path.split('/')[-1]))
     f.close()
 ost.logout()
