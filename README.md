@@ -57,6 +57,11 @@ Just Navigate to any Video and Right Click , You'll See a "Get Subtitle" (Shown 
 
 </br></hr></br></hr>
 After Clicking the submenu Option a new Confirmational window will appear and You'll see the subtitles Appear in the Folder.(Shown in Image Below)
-</br></hr><b>Note:</b><i></br></hr> <ul><li>It takes some time to search and download the Subtitles (2-5 Secs) Depending Upon you computer and Internet Speed.</li><li> The Subtiles will only be Downloaded if they Exists on The Opensubtitles Website. </li></ul>
+</br></hr><b>Note:</b><i></br></hr> <ul><li>It takes some time to search and download the Subtitles (2-5 Secs) Depending Upon you computer and Internet Speed.</li><li> The Subtiles will only be downloaded if they exist on Opensubtitles Website. </i></li></ul>
 
 ![Image Showing Downloaded Subtitle and confirmation window in Nautils.](/Screenshots/Downloaded_File_With_confirmation.png "Image Showing Downloaded Subtitle and confirmation window in Nautils.")
+
+
+</br></hr></br></hr>
+<b>Feedback:</b>
+For feeback or error reporting please E-mail me at: <mailto:ubdussamad@gmail.com>.
