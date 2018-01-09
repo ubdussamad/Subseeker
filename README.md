@@ -1,17 +1,16 @@
 # Subseeker
 Automatic Subtitle Downloading Tool for Nautilus in Ubuntu.
-Uses opensubtitles.org's XMLRPC api to query and download subtitles.
+Uses opensubtitles.org's XMLRPC API to query and download subtitles.
 
-It's frontend is basically a Nautilus-Action Config , that gives a submenu option to download subtilies.
+Its frontend is basically a Nautilus-Action Config, that gives a submenu option to download subtitles.
 
-Backend is a small python script that genrates the video files hash and does a query to the opensubtitles api.
+The backend is a small python script that generates the video files hash and does a query to the opensubtitles API.
 
-<b>The Default Environment Must be Python2 or Cpython2 for it to work as, the hasing function isn't compatible with python3.</b>
+<b>The Default Environment Must be Python2 or Cpython2 for it to work as the hashing function isn't compatible with python3.</b>
 
-If any Subtitle is there related with the video hash , it downloads it automatically and places the subtitle in the same folder as the video.
+If any Subtitle is there related to the video hash, it downloads it automatically and places the subtitle in the same folder as the video.
 
-As if now , it only downloads English subtitles but language support will be added in coming versions.
-
+As if now, it only downloads English subtitles but language support will be added in coming versions.
 
 </hr></br>
 <b>Dependencies are:</b>
@@ -44,7 +43,7 @@ As if now , it only downloads English subtitles but language support will be add
 
 <li> Enter 'y' if asked to install Dependencies.(external utility packages.)</li>
 
-<li> A login text shows , Enter your opensubtitle username and password there.</li>
+<li> A login text shows, Enter your opensubtitle username and password there.</li>
 
 <li> Once the Partial installation complete , a new readme will open with futher instructions.</li> </ol>
 
@@ -53,13 +52,13 @@ As if now , it only downloads English subtitles but language support will be add
 Just Navigate to any Video and Right Click , You'll See a "Get Subtitle" (Shown In Image Below) Option in the Submenu. 
 </br></hr></br></hr>
 
-![Image Showing Submenu Option "Get Subtitles" in Nautils.](/Screenshots/Nautilus_Submenu_Option.png "Image Showing Submenu Option 'Get Subtitles' in Nautils.")
+![Image Showing Submenu Option "Get Subtitles" in Nautilus.](/Screenshots/Nautilus_Submenu_Option.png "Image Showing Submenu Option 'Get Subtitles' in Nautilus.")
 
 </br></hr></br></hr>
 After Clicking the submenu Option a new Confirmational window will appear and You'll see the subtitles Appear in the Folder.(Shown in Image Below)
 </br></hr><b>Note:</b><i></br></hr> <ul><li>It takes some time to search and download the Subtitles (2-5 Secs) Depending Upon you computer and Internet Speed.</li><li> The Subtiles will only be downloaded if they exist on Opensubtitles Website. </i></li></ul>
 
-![Image Showing Downloaded Subtitle and confirmation window in Nautils.](/Screenshots/Downloaded_File_With_confirmation.png "Image Showing Downloaded Subtitle and confirmation window in Nautils.")
+![Image Showing Downloaded Subtitle and confirmation window in Nautilus.](/Screenshots/Downloaded_File_With_confirmation.png "Image Showing Downloaded Subtitle and confirmation window in Nautilus.")
 
 
 </br></hr></br></hr>
