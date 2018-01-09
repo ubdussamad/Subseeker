@@ -47,3 +47,8 @@ As if now , it only downloads English subtitles but language support will be add
 <li> A login text shows , Enter your opensubtitle username and password there.</li>
 
 <li> Once the Partial installation complete , a new readme will open with futher instructions.</li> </ol>
+
+</hr></br>
+<b> Usage Instructions: </b> </hr></br>
+Just Navigate to any Video and Right Click , You'll See a "Get Subtitle" (Shown In Image Below) Option in the Submenu. 
+![Image Showing Submenu Option "Get Subtitles" in Nautils.](Screenshots/Nautilus Submenu Option.png "Image Showing Submenu Option 'Get Subtitles' in Nautils.")
