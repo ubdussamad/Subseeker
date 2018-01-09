@@ -9,12 +9,13 @@ Backend is a small python script that genrates the video files hash and does a q
 If any Subtitle is there related with the video hash , it downloads it automatically and places the subtitle in the same folder as the video.
 
 As if now , it only downloads English subtitles but language support will be added in coming versions.
-
 <b>Dependencies are:</b>
 
 <li>Nautilus Action Config Tool </li>
 <b>Note:</b><i> You'll be automatically asked to install it at the time of installation of Subseeker. </i>
 </br>
+
+</br></hr>
 <b>Size Information:</b>
 <li>Total size including Nautilus Action Config Tool: ~ 13 MegaBytes</li>
 <li>Total size excluding Nautilus Action Config Tool: ~ 30 KiloBytes </li>
