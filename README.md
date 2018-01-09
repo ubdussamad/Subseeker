@@ -39,7 +39,7 @@ As if now, it only downloads English subtitles but language support will be adde
 
 <li> In explorer (File manager window of subseeker folder) , right click and select 'Open in Terminal'.</li>
 
-<li> In the terminal Window type: `$ sudo python3 Install.py`. (Without Quotes)</li>
+<li> In the terminal Window type: <code>$ sudo python3 Install.py</code>. (Without Quotes)</li>
 
 <li> Enter 'y' if asked to install Dependencies.(external utility packages.)</li>
 
