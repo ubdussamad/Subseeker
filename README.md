@@ -13,6 +13,7 @@ As if now , it only downloads English subtitles but language support will be add
 <b>Dependencies are:</b>
 
 <li>Nautilus Action Config Tool </li>
+<b>Note:</b><i> You'll be automatically asked to install it at the time of installation of Subseeker. </i>
 </br>
 <b>Size Information:</b>
 <li>Total size including Nautilus Action Config Tool: ~ 13 MegaBytes</li>
