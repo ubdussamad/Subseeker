@@ -53,4 +53,4 @@ As if now , it only downloads English subtitles but language support will be add
 Just Navigate to any Video and Right Click , You'll See a "Get Subtitle" (Shown In Image Below) Option in the Submenu. 
 </b4></hr>
 
-![Image Showing Submenu Option "Get Subtitles" in Nautils.]( Subseeker/Screenshots/Downloaded File With confirmation.png "Image Showing Submenu Option 'Get Subtitles' in Nautils.")
+![Image Showing Submenu Option "Get Subtitles" in Nautils.](/Screenshots/Nautilus_Submenu_Option.png "Image Showing Submenu Option 'Get Subtitles' in Nautils.")
