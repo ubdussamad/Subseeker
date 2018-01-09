@@ -10,7 +10,7 @@ If any Subtitle is there related with the video hash , it downloads it automatic
 
 As if now , it only downloads English subtitles but language support will be added in coming versions.
 
-Dependencies are:
+<b>Dependencies are:</b>
 
 <li>Nautilus Action Config Tool </li>
 
