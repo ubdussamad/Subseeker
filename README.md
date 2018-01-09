@@ -6,7 +6,7 @@ It's frontend is basically a Nautilus-Action Config , that gives a submenu optio
 
 Backend is a small python script that genrates the video files hash and does a query to the opensubtitles api.
 
-<b>The Default Environment Must be Python2 or Cpython2 for it to work as the hasing function isn't compatible with python3.</b>
+<b>The Default Environment Must be Python2 or Cpython2 for it to work as, the hasing function isn't compatible with python3.</b>
 
 If any Subtitle is there related with the video hash , it downloads it automatically and places the subtitle in the same folder as the video.
 
