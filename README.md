@@ -13,7 +13,30 @@ As if now , it only downloads English subtitles but language support will be add
 <b>Dependencies are:</b>
 
 <li>Nautilus Action Config Tool </li>
-
+</br>
 <b>Size Information:</b>
 <li>Total size including Nautilus Action Config Tool: ~ 13 MegaBytes</li>
 <li>Total size excluding Nautilus Action Config Tool: ~ 30 KiloBytes </li>
+</br>
+</br>
+<b> Installation Procedure: </b>
+<ol type="I">
+  <li>* You must have an Opensubtitles Account to use this app.</li>
+
+<li>* Follow : "https://www.opensubtitles.org/en/newuser"   , to register.</li>
+
+<li>* Download or clone the Archived Package to your home folder.</li>
+
+<li>* Extract the tar ball (Compressed Archive) to **Home folder** .</li>
+
+<li>* Navigate to subseeker folder.</li>
+
+<li>* In explorer (File manager window of subseeker folder) , right click and select 'Open in Terminal'.</li>
+
+<li>* In the terminal Window type: 'sudo python3 Install.py'. (Without Quotes)</li>
+
+<li>* Enter 'y' if asked to install Dependencies.(external utility packages.)</li>
+
+<li>* A login text shows , Enter your opensubtitle username and password there.</li>
+
+<li>* Once the Partial installation complete , a new readme will open with futher instructions.</li> </ol>
