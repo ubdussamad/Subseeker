@@ -21,9 +21,9 @@ As if now , it only downloads English subtitles but language support will be add
 </br>
 <b> Installation Procedure: </b>
 <ol type="i">
-  <li>* You must have an Opensubtitles Account to use this app.</li>
+<li> You must have an Opensubtitles Account to use this app.</li>
 
-<li> Follow : "https://www.opensubtitles.org/en/newuser"   , to register.</li>
+<li> Follow : <i>"https://www.opensubtitles.org/en/newuser"</i>   , to register.</li>
 
 <li> Download or clone the Archived Package to your home folder.</li>
 
