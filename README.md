@@ -1,6 +1,6 @@
 # Subseeker
 Automatic Subtitle Downloading Tool for Nautilus in Ubuntu.
-Use opensubtitles.org's XMLRPC api to query and download subtitles.
+Uses opensubtitles.org's XMLRPC api to query and download subtitles.
 
 It's frontend is basically a Nautilus-Action Config , that gives a submenu option to download subtilies.
 
