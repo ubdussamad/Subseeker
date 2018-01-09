@@ -1,0 +1,17 @@
+* You must have an Opensubtitles Account to use this app.
+
+* Follow : "https://www.opensubtitles.org/en/newuser"   , to register.
+
+* Extract the tar ball (Compressed Archive) to **Home folder**
+
+* Navigate to subseeker folder
+
+* In explorer (File manager window of subseeker folder) , right click and select 'Open in Terminal'
+
+* In the terminal Window type ' sudo python3 Install.py'
+
+* Enter 'y' if asked to install dependencies (external utility packages)
+
+* A login text shows , Enter your opensubtitle username and password there!
+
+* Once the Partial installation complete , a new readme will open with futher instructions!
