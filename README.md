@@ -12,7 +12,7 @@ As if now , it only downloads English subtitles but language support will be add
 
 Dependencies are:
 
-*Nautilus Action Config Tool
+<li>Nautilus Action Config Tool </li>
 
 
 Total size including Nautilus Action Config Tool: ~ 13 MegaBytes
