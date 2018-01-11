@@ -10,7 +10,7 @@ The backend is a small python script that generates the video files hash and doe
 
 If any Subtitle is there related to the video hash, it downloads it automatically and places the subtitle in the same folder as the video.
 
-As if now, it only downloads English subtitles but language support will be added in coming versions.
+Language Support has been added , and the default language is to be selected during the process of installation.
 
 </hr></br>
 <b>Dependencies are:</b>
@@ -44,6 +44,8 @@ As if now, it only downloads English subtitles but language support will be adde
 <li> Enter 'y' if asked to install Dependencies.(external utility packages.)</li>
 
 <li> A login text shows, Enter your opensubtitle user-name and password there.</li>
+
+<li> A language selection text shows , Select your default language by entering <link href="https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes">ISO 639-2</link> three letter language code.
 
 <li> Once the Partial installation complete , a new read-me will open with futher instructions.</li> </ol>
 
