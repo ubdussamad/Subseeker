@@ -45,7 +45,7 @@ Language Support has been added , and the default language is to be selected dur
 
 <li> A login text shows, Enter your opensubtitle user-name and password there.</li>
 
-<li> A language selection text shows , Select your default language by entering <link href="https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes">ISO 639-2</link> three letter language code.
+<li> A language selection text shows , Select your default language by entering [ISO 639-2](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) three letter language code.
 
 <li> Once the Partial installation complete , a new read-me will open with futher instructions.</li> </ol>
 
