@@ -136,7 +136,7 @@ full_path = sys.argv[1]#,usr,password = sys.argv
 
 f = open(os.path.expanduser('~/.subseeker/usr_config.ini'),'r')
 data = f.read().split('|')
-usr,password = data
+usr,password,default_lang = data
 f.close()
 
 
@@ -152,7 +152,7 @@ try:
     data = ost.search_subtitles([{'sublanguageid': 'en', 'moviehash': str(movie_hash), 'moviebytesize': size }])
 
     for i in data:
-        if i.get('SubLanguageID') == 'eng':
+        if i.get('SubLanguageID') == default_lang:
             ziplink = i.get('ZipDownloadLink')
             break
     if ziplink:#Downloding n extracting the subtitle
