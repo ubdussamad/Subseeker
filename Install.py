@@ -1,12 +1,13 @@
 #!/usr/bin/env python
-import apt
-import os
+try:
+    import apt,os,time
+except:
+    print("Please run this installer by python3.")
+    raise ImportError("Use Python 3 for this script.")
 from shutil import copyfile
+from subprocess import call
 cache = apt.Cache()
 
-from subprocess import call
-
-import time
 if cache['nautilus-actions'].is_installed:
     pass
 else:
@@ -19,19 +20,23 @@ else:
 
 
 def first_run():
-	try:
-		z = open('usr_config.ini')
-		z.close()
-		del z
-		return 0
-	except:
-            print(''' Welcome to Subseeker 2v1\n For downloading subtitles through this utility
-                      you should have a opensubtitle username and password , please create your account and sign in:''')
-            username = str( input ("Enter username: ") )
-            password = str( input ("Enter password: ") )
+    try:
+        z = open('usr_config.ini')
+        z.close()
+        del z
+        return 0
+    except:
+            print('''Welcome to Subseeker 2v1\nFor downloading subtitles through this utility you should have a \nopensubtitle username and password , please create your account and sign in:''')
+            username = str( input ("\nEnter username: ") )
+            password = str( input ("\nEnter password: ") )
+            print('''\nChoose you default subtitle language code below:\nFor a detailed language code list, please visit: \nhttps://www.opensubtitles.org/addons/export_languages.php  (Use the three letter codes!) \nLeave it blank by pressing Enter for English.''')
+            default_lang = str ( input( "Enter the language code for the default Subtitle language you want to choose:" ))
+            if default_lang == '':
+                default_lang = 'eng'
+                print("\nDefault Language set to English.")
             print("\n User Created!")
             f = open('usr_config.ini','w')
-            f.write('%s|%s'%(username,password))
+            f.write('%s|%s|%s'%(username,password,default_lang))
             f.close()
 first_run()
 
@@ -71,7 +76,7 @@ string = '''
  \n * Restart the Computer.
  \n * Delete the extracted Archive to save disk space.
  \n * Delete the "subseeker" folder and the readme file you extracted to save disk space.
- \n\n     ** Test Installation. **
+ \n\n                        ** Test Installation. **
  \n * Navigate to a video file , In the third last row click "Nautilus Actions" and Then "Get Subs".
  \n * The Subtitle will be Automatically Downloaded in the same folder as Video.
  \n * Enjoy! '''
@@ -81,7 +86,3 @@ f.write(string)
 f.close()
 
 call(["gedit",os.path.expanduser('~')+'/readme.txt'])
-
-
-
-
