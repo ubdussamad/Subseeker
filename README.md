@@ -16,7 +16,7 @@ Language Support has been added , and the default language is to be selected dur
 <b>Dependencies are:</b>
 
 <li>Nautilus Action Config Tool </li>
-<b>Note:</b><i> You'll be automatically asked to install it at the time of installation of Subseeker. </i>
+<b>Note:</b><i> You'll be automatically asked to install it while installing Subseeker. </i>
 </br>
 
 </br></hr>
