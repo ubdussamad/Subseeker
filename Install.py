@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 try:
-    import tkinter as tk
+    import apt,os,time
 except:
-    import Tkinter as tk
-
-import os,sys,apt,time
+    print("Please run this installer by python3.")
+    raise ImportError("Use Python 3 for this script.")
+from shutil import copyfile
 from subprocess import call
-if apt.Cache()['nautilus-actions'].is_installed:
+cache = apt.Cache()
+
+if cache['nautilus-actions'].is_installed:
     pass
 else:
     print("Nautilus Action Tool is not installed, You can install it by typing: \n sudo apt-get install nautilus-actions")
@@ -17,87 +19,52 @@ else:
         exit()
 
 
-class MainApplication(tk.Frame):
-    def __init__(self, parent, *args, **kwargs):
-        tk.Frame.__init__(self, parent, *args, **kwargs)
-        self.parent = parent
-        self.parent.title('Subseeker Installer')
-        self.header()
-        self.input_fields()
-        self.language_selection()
-        self.button()
-        self.exit_button()
-    def header(self):
-        #Header layout for stuff
-        heading1_label=tk.Label(self.parent,text="\nWelcome to Subseeker Setup Utility\n",fg="black",font="NanumGothicCoding 15 bold")
-        heading1_label.pack(padx=20)
-        heading ='You are supposed to have an opensubtitle account\nto continue with Subseeker, please provide your\nlogin credentials below:'
-        heading2_label=tk.Label(self.parent,text=heading,fg='blue',font='NanumGothicCoding 10 italic').pack()
-    def input_fields(self):
-        usr_label=tk.Label(self.parent,text='\nEnter username:',fg='black',font='NanumGothicCoding 10',anchor='e').pack()
-        self.usr_entry = tk.Entry(self.parent)
-        self.usr_entry.pack()
-        usr_label=tk.Label(self.parent,text='\nEnter password:',fg='black',font='NanumGothicCoding 10',anchor='e').pack()
-        self.pwd_entry = tk.Entry(self.parent,show="*")
-        self.pwd_entry.pack()
-    def language_selection(self):
-        heading = tk.Label(self.parent,text='\nSelect Your default language for subtitles below:').pack()
-        with open('lang_pack.csv','r') as languages:
-            languages = languages.read().split('\n')
-            languages = [i.split(',')[1] for i in languages if len(i) > 1]
-        self.language = tk.StringVar(self.parent)
-        self.language.set(languages[2]) # default value
-        self.lang_selection = tk.OptionMenu(self.parent,self.language, *languages)
-        self.lang_selection.pack()
-    def button(self):
-        submit_button = tk.Button(self.parent,text='Submit',font='Consolas 11',command=self.process).pack(padx=160,pady=10)
-
-    def process(self):
-        if self.usr_entry.get() and self.pwd_entry.get() and self.lang_selection:
-            print("Process Started!")
-            with open('lang_pack.csv') as lang_code:
-                lang_code = lang_code.read().split('\n')
-                lang_code = dict( [i.split(',')[::-1] for i in lang_code if len(i) > 1])
-            username,password,default_lang = [self.usr_entry.get(),self.pwd_entry.get(),lang_code[self.language.get()]]
+def first_run():
+    try:
+        z = open('usr_config.ini')
+        z.close()
+        del z
+        return 0
+    except:
+            print('''Welcome to Subseeker 2v1\nFor downloading subtitles through this utility you should have a \nopensubtitle username and password , please create your account and sign in:''')
+            username = str( input ("\nEnter username: ") )
+            password = str( input ("\nEnter password: ") )
+            print('''\nChoose you default subtitle language code below:\nFor a detailed language code list, please visit: \nhttps://www.opensubtitles.org/addons/export_languages.php  (Use the three letter codes!) \nLeave it blank by pressing Enter for English.''')
+            default_lang = str ( input( "Enter the language code for the default Subtitle language you want to choose:" ))
+            if default_lang == '':
+                default_lang = 'eng'
+                print("\nDefault Language set to English.")
+            print("\n User Created!")
             f = open('usr_config.ini','w')
             f.write('%s|%s|%s'%(username,password,default_lang))
             f.close()
-            self.parent.destroy()
-            print("Now installing ......")
-            print("\n Copying Files......")
+first_run()
 
-            cwd = os.getcwd()
-            try:
-                os.mkdir(os.path.expanduser('~')+'/.subseeker/')
-            except:
-                print("Directory Already exists!")
+print("Now installing ......")
+print("\n Copying Files......")
 
-            #copyfile(cwd+'/subseeker.py', os.path.expanduser('~')+'/.subseeker/')
+cwd = os.getcwd()
+try:
+    os.makedirs(os.path.expanduser('~')+'/.subseeker/')
+except:
+    print("Directory Already exists!")
 
-            call(['cp',cwd+'/subseeker.py',os.path.expanduser('~')+'/.subseeker/'])
-            print("Copying Config Files...")
-            time.sleep(2)
-            call(['cp',cwd+'/usr_config.ini',os.path.expanduser('~')+'/.subseeker/'])
-            print("Copying Config Files:OK!")
-            time.sleep(2)
-            print("Files copied \n Installation completed , Opening readme....")
-            self.launch_readme()
-        else:
-            print("Plese provide with usrname and password!")
-    def exit_button(self):
-        exit_button = tk.Button(root,text='Exit!',font="NanumGothicCoding 12 bold",fg='dark red',command=root.destroy).pack(pady=0)
+#copyfile(cwd+'/subseeker.py', os.path.expanduser('~')+'/.subseeker/')
 
-    def mycolor(x):
-        return '#%02x%02x%02x' % x
-    def launch_readme(self):
-        f = open(os.path.expanduser('~')+'/readme.txt','w')
-        f.write(string)
-        f.close()
-        call(["gedit",os.path.expanduser('~')+'/readme.txt'])
-    
+call(['cp',cwd+'/subseeker.py',os.path.expanduser('~')+'/.subseeker/'])
+print("Copying Config Files...")
+time.sleep(2)
+call(['cp',cwd+'/usr_config.ini',os.path.expanduser('~')+'/.subseeker/'])
+print("Copying Config Files:OK!")
+time.sleep(2)
+print("Files copied \n Installation completed , Opening readme....")
+
+
+
+
+
 string = '''
  Subseeker 2v2  \n Installation complete , just one step from here and we're ready to go!
-
  \n * Open Nautilus Action Config Tool for the Search Bar.
  \n * Select "Tools" from the top toolbar of Nautilus Action Config Tool.
  \n * Select "Import assistant" from the Dropdown Menu.
@@ -112,7 +79,9 @@ string = '''
  \n * Navigate to a video file , In the third last row click "Nautilus Actions" and Then "Get Subs".
  \n * The Subtitle will be Automatically Downloaded in the same folder as Video.
  \n * Enjoy! '''
-if __name__ == "__main__":
-    root = tk.Tk()
-    MainApplication(root).pack(side="top", fill="both", expand=True)
-    root.mainloop()
+
+f = open(os.path.expanduser('~')+'/readme.txt','w')
+f.write(string)
+f.close()
+
+call(["gedit",os.path.expanduser('~')+'/readme.txt'])
