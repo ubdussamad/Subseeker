@@ -29,7 +29,7 @@ class window(Gtk.Window):
         self.headings();self.user_input_dialouges();self.action_buttons()
 
     def headings(self):
-        #Heading Stuff
+        '''Contains Heading and directive labels for the UI.'''
         self.heading_text = Gtk.Label('''Welcome to Subseeker Setup Utility\n\nPlease Login with your Opensubtitles\n credentials to use Subseeker.\n''')
         self.heading_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=10)
         self.heading_box.pack_start(self.heading_text,1,1,0)
@@ -37,7 +37,8 @@ class window(Gtk.Window):
         self.listbox.add(self.heading_box)
         
     def user_input_dialouges(self):
-        #Username Input Field
+        ''' Contains Username and Password Entry dialouges,
+        with Language Selection Dropdown list and One Unimplimented Feature toggle button''' 
         self.username_row = Gtk.ListBoxRow()
         self.username_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=0)
         self.username_row.add(self.username_box)
@@ -83,7 +84,8 @@ class window(Gtk.Window):
         self.listbox.add(self.lang_row)
         
     def action_buttons(self):
-        #Submit Button for stuff and things
+        '''Contains Submit Action button for 
+        submitting the Credentials and prefrences of user for configration settings'''
         self.submit_row = Gtk.ListBoxRow()
         self.submit_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=10)
         self.submit_row.add(self.submit_box)
@@ -93,7 +95,8 @@ class window(Gtk.Window):
         self.listbox.add(self.submit_row)
         
     def submit_handle(self,widget):
-        #Handles all Operations after Submit is Called
+        ''' Handles all config setting genrations for the given set of credentials,
+        and writes these config files to their respective directories of functionality.'''
         username,password,lang = self.username_entry.get_text(),self.password_entry.get_text(),self.lang_combo.get_active_text()
         if not( username and password and lang):
             print("Please fill empty fields before submitting.!")
@@ -124,13 +127,15 @@ class window(Gtk.Window):
         self.launch_readme()
         
     def launch_readme(self):
-        f = open(os.path.expanduser('~')+'/readme.txt','w')
-        f.write(string)
-        f.close()
+        ''' Launches new readme for user to setup the nautilus-actions-config tool
+        for final use of subseeker'''
+        with open(os.path.expanduser('~')+'/readme.txt','w') as file_handle:
+            file_handle.write(string)
         Popen(["gedit",os.path.expanduser('~')+'/readme.txt'])
         sys.exit(0)
         
     def dummy(self,widget):
+        '''Test function for widget callbacks'''
         print("Callback test for %s widget!"%widget)
         return
 
