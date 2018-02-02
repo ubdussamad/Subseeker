@@ -44,10 +44,10 @@ Language Support has been added , and the default language is to be selected dur
 <li> Enter 'y' if asked to install Dependencies.(external utility packages.)</li>
 
 <li> A Setup window pops up, Enter your opensubtitle user-name and password there and select your default language.</li>
-![Setup Window](/Screenshots/login.png "Setup Window")
+![Setup Window]("/Screenshots/login.png")
 
 <li> Once the Partial installation complete , a new read-me will open with futher instructions.</li>
-![After Setup Monologue](/Screenshots/afterlogin.png "After setup Window")
+![After Setup Monologue]("/Screenshots/afterlogin.png")
 
 </ol>
 
