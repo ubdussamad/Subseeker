@@ -26,7 +26,7 @@ Language Support has been added , and the default language is to be selected dur
 </br>
 </br>
 <b>Installation Procedure: </b>
-<ol type="i">
+<ol>
 <li> You must have an Opensubtitles Account to use this app.</li>
 
 <li> Follow : <i>"https://www.opensubtitles.org/en/newuser"</i>   , to register.</li>
@@ -43,11 +43,13 @@ Language Support has been added , and the default language is to be selected dur
 
 <li> Enter 'y' if asked to install Dependencies.(external utility packages.)</li>
 
-<li> A login text shows, Enter your opensubtitle user-name and password there.</li>
+<li> A Setup window pops up, Enter your opensubtitle user-name and password there and select your default language.</li>
+![Setup Window](https://github.com/ubdussamad/Subseeker/blob/master/Screenshots/login.png)
 
-<li> A language selection text shows , Select your default language by entering [ISO 639-2] (https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) three letter language code.
+<li> Once the Partial installation complete , a new read-me will open with futher instructions.</li>
+![After Setup Monologue](https://github.com/ubdussamad/Subseeker/blob/master/Screenshots/afterlogin.png)
 
-<li> Once the Partial installation complete , a new read-me will open with futher instructions.</li> </ol>
+</ol>
 
 </hr></br>
 <b>Usage Instructions: </b> </hr></br></hr></br>
