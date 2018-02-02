@@ -46,6 +46,7 @@ class window(Gtk.Window):
         self.username_box.pack_start(self.username_label,1,1,10)
         self.username_box.pack_start(self.username_entry,1,1,10)
         self.listbox.add(self.username_row)
+        
         #Password Input Field
         self.password_row = Gtk.ListBoxRow()
         self.password_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=10)
@@ -56,6 +57,7 @@ class window(Gtk.Window):
         self.password_box.pack_start(self.password_label,1,1,10)
         self.password_box.pack_start(self.password_entry,1,1,10)
         self.listbox.add(self.password_row)
+        
         #Toggle Switch for 3rd party Search, This Feature is currently not implimented.
         self.switch_row = Gtk.ListBoxRow()
         self.switch_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=10)
@@ -65,6 +67,7 @@ class window(Gtk.Window):
         self.switch_box.pack_start(self.switch_label,1,1,10)
         self.switch_box.pack_start(self.switch_entry,1,1,10)
         self.listbox.add(self.switch_row)
+        
         #List box for language Selection
         self.lang_row = Gtk.ListBoxRow()
         self.lang_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=10)
@@ -78,6 +81,7 @@ class window(Gtk.Window):
         self.lang_box.pack_start(self.lang_label,1,1,10)
         self.lang_box.pack_start(self.lang_combo,1,1,10)
         self.listbox.add(self.lang_row)
+        
     def action_buttons(self):
         #Submit Button for stuff and things
         self.submit_row = Gtk.ListBoxRow()
