@@ -2,7 +2,7 @@
 import os,sys,apt,time,gi
 gi.require_version('Gtk','3.0')
 from gi.repository import Gtk
-from subprocess import call
+from subprocess import call,Popen
 
 
 if not apt.Cache()['nautilus-actions'].is_installed:
@@ -127,7 +127,7 @@ class window(Gtk.Window):
         f = open(os.path.expanduser('~')+'/readme.txt','w')
         f.write(string)
         f.close()
-        call(["gedit",os.path.expanduser('~')+'/readme.txt'])
+        Popen(["gedit",os.path.expanduser('~')+'/readme.txt'])
         sys.exit(0)
         
     def dummy(self,widget):
