@@ -2,7 +2,7 @@
 import os,sys,apt,time,gi
 gi.require_version('Gtk','3.0')
 from gi.repository import Gtk
-from subprocess import call,Popen
+from subprocess import (call,Popen)
 
 
 if not apt.Cache()['nautilus-actions'].is_installed:
@@ -25,7 +25,7 @@ class window(Gtk.Window):
         self.add(self.listbox)
         self.set_default_size(300,300)
         self.set_resizable(False)
-        #Calling UI-Functions
+        #Calling UI-Widget-Methods
         self.headings();self.user_input_dialouges();self.action_buttons()
 
     def headings(self):
@@ -98,7 +98,7 @@ class window(Gtk.Window):
         ''' Handles all config setting genrations for the given set of credentials,
         and writes these config files to their respective directories of functionality.'''
         username,password,lang = self.username_entry.get_text(),self.password_entry.get_text(),self.lang_combo.get_active_text()
-        if not( username and password and lang):
+        if not (username and password and lang):
             print("Please fill empty fields before submitting.!")
             return
         self.destroy()
