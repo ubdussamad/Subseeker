@@ -25,7 +25,7 @@ class window(Gtk.Window):
         self.add(self.listbox)
         self.set_default_size(300,300)
         self.set_resizable(False)
-        #Calling UI-Widget-Methods
+        #UI-Widget-Method Calls
         self.headings();self.user_input_dialouges();self.action_buttons()
 
     def headings(self):
