@@ -30,7 +30,8 @@ class window(Gtk.Window):
 
     def headings(self):
         #Heading Stuff
-        self.heading_text = Gtk.Label('''Welcome to Subseeker Setup Utility\n\nPlease Login with your Opensubtitles\n credentials to use Subseeker.\n''')
+        self.heading_text = Gtk.Label()
+        self.heading_text.set_markup('''<big><b>Welcome to Subseeker Setup Utility</b></big>\n\n<i>Please Login with your Opensubtitles credentials\n                                 to use Subseeker.</i>\n''')
         self.heading_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=10)
         self.heading_box.pack_start(self.heading_text,1,1,0)
         self.heading_box.set_center_widget(self.heading_text)
