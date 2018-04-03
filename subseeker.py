@@ -6,9 +6,9 @@ from zipfile import ZipFile
 from StringIO import StringIO
 from xmlrpclib import ServerProxy, Transport
 
-'''This is an python implimentaion of subseeker module using Opensubtitles API named XML RPC.
+'''This is an python implementaion of subseeker module using Opensubtitles API named XML RPC.
    All the rights are Reserved by the author and modifying and sharing this peice of software is allowed given credit to author.
-   You can read more about the functionalities and procedures at: https://github.com/ubdussamad/Subseeker
+   You can read more about the functionalities of this software at: https://github.com/ubdussamad/Subseeker
    '''
 
 REMOTE_SERVER = "www.opensubtitles.org"
