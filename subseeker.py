@@ -42,13 +42,13 @@ def hashFile(name):
       except(IOError): 
                 return "IOError"
 
-class LoginError(Exception):#Login Faliures
+class LoginError(Exception):#Login Failures
     pass
     
-class URLError(Exception):#Internet Connectivity Faliures
+class URLError(Exception):#Internet Connectivity Failures
     pass
 
-class NoLangMatchError(Exception):#Default language dosen't matches
+class NoLangMatchError(Exception):#Default language doesn't matches
     pass
     
            
@@ -82,7 +82,7 @@ class OpenSubtitles(object):
         return token
 
     def logout(self):
-        '''Returns True is logout is ok, otherwise None.
+        '''Returns True is logout is Ok, otherwise None.
         '''
         data = self.xmlrpc.LogOut(self.token)
         return '200' in data.get('status')
@@ -132,10 +132,10 @@ try:
 except Exception as err:
     print(err)
     f = open('Sorry, We can\'t find a Sub.txt','w')
-    f.write(''' We are truely sorry for the inconvinience caused! \n
+    f.write(''' We are deeply sorry for the inconvenience caused! \n
             \n We tried to get the subtitle for your movie/video:
             \n %s \n\n But had no Luck! \n This can happen due to some of the reasons below:
-            \n * Sub dosen't exists on Opensubtitles.org
+            \n * Sub doesn't exists on Opensubtitles.org
             \n * The movie is new and it's Hash isn't available or linked to the Subtitle.
             \n * Internet Connection problem.
             \n * The video is not popular (A recorded video or A music video).
