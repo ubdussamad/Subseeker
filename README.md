@@ -39,7 +39,7 @@ Language Support has been added , and the default language is to be selected dur
 
 <li> In explorer (File manager window of subseeker folder) , right click and select 'Open in Terminal'.</li>
 
-<li> In the terminal Window type: <code>$ sudo ./Install.py</code></li>
+<li> In the terminal Window type: <code>$ sudo ./Install </code></li>
 
 <li> Enter 'y' if asked to install Dependencies.(external utility packages.)</li>
 
