@@ -36,19 +36,22 @@ def hashFile(name):
                         (l_value,)= struct.unpack(longlongformat, buffer)  
                         hash += l_value 
                         hash = hash & 0xFFFFFFFFFFFFFFFF                  
-            	f.close() 
+                f.close()
                 returnedhash =  "%016x" % hash 
                 return returnedhash 
       except(IOError): 
                 return "IOError"
 
 class LoginError(Exception):#Login Faliures
-	pass
-	
+    pass
+    
 class URLError(Exception):#Internet Connectivity Faliures
-	pass
-	
-	       
+    pass
+
+class NoLangMatchError(Exception):#Default language dosen't matches
+    pass
+    
+           
 class Settings(object):
     OPENSUBTITLES_SERVER = 'http://api.opensubtitles.org/xml-rpc'
     USER_AGENT = 'TemporaryUserAgent'
@@ -100,32 +103,36 @@ f.close()
 
 try:
     if not(is_connected(REMOTE_SERVER)):
-	    raise URLError,("No Internet Connection.")
-	
+        raise URLError,("No Internet Connection.")
+    
     movie_hash = hashFile(full_path) #Covered
     ost = OpenSubtitles() #Username and password are given as arguments | Covered
     
     if not(ost.login(usr,password)):
-    	raise LoginError("Bad Login, Please check credentials.")
+        raise LoginError("Bad Login, Please check credentials.")
 
     size = str(os.path.getsize(full_path))
     data = ost.search_subtitles([{'sublanguageid': 'en', 'moviehash': str(movie_hash), 'moviebytesize': size }])
 
-
     for i in data:
-        if i.get('SubLanguageID') == default_lang:
+      if i.get('SubLanguageID') == default_lang:
+            print("I am happening")
             ziplink = i.get('ZipDownloadLink')
             break
+    try:
+      print(ziplink)
+    except:
+      raise NoLangMatchError,("No subtitles matching your default language.")
     if ziplink:#Downloding n extracting the subtitle
         url = urlopen(ziplink)
         zip_ref = ZipFile(StringIO(url.read()))
         zip_ref.extractall('/'.join(full_path.split('/')[:-1]))
         zip_ref.close()
-	print("Subtitle Download Complete.")
+    print("Subtitle Download Complete.")
 except Exception as err:
-	print(err)
-    	f = open('Sorry, We can\'t find a Sub.txt','w')
-        f.write(''' We are truely sorry for the inconvinience caused! \n
+    print(err)
+    f = open('Sorry, We can\'t find a Sub.txt','w')
+    f.write(''' We are truely sorry for the inconvinience caused! \n
             \n We tried to get the subtitle for your movie/video:
             \n %s \n\n But had no Luck! \n This can happen due to some of the reasons below:
             \n * Sub dosen't exists on Opensubtitles.org
@@ -135,5 +142,5 @@ except Exception as err:
             \n\n All of the above reasons could introduce this error!
             \n   Contact ubdussamad at_the_rate gmail _.com , To report any persistent Error.
             \n ||Thanks for using Subseeker ||'''%(full_path.split('/')[-1]))
-        f.close()
+    f.close()
 ost.logout()
