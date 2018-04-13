@@ -22,7 +22,7 @@ Language Support has been added , and the default language is to be selected dur
 </br></hr>
 <b>Size Information:</b>
 <li>Total size including Nautilus Action Config Tool: ~ 14 MegaBytes</li>
-<li>Total size excluding Nautilus Action Config Tool: ~ 250 KiloBytes </li>
+<li>Total size excluding Nautilus Action Config Tool: > 400 KiloBytes </li>
 </br>
 </br>
 <b>Installation Procedure: </b>
