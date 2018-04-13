@@ -7,7 +7,7 @@ index = None
 class TreeViewFilterWindow(Gtk.Window):
     
     def __init__(self,people):
-        Gtk.Window.__init__(self, title="People Finder")
+        Gtk.Window.__init__(self, title="Subseeker v4")
 
         #Main list box
         main_list_box = Gtk.ListBox()
