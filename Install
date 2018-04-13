@@ -135,7 +135,7 @@ class window(Gtk.Window):
         return
 
 string = '''
- Subseeker 2v2  \n Installation complete , just one step from here and we're ready to go!
+ Subseeker 4V0  \n Installation complete , just one step from here and we're ready to go!
 
  \n * Open Nautilus Action Config Tool for the Search Bar.
  \n * Select "Tools" from the top toolbar of Nautilus Action Config Tool.
