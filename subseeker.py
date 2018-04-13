@@ -6,11 +6,6 @@ from zipfile import ZipFile
 from StringIO import StringIO
 from xmlrpclib import ServerProxy, Transport
 
-'''This is an python implementaion of subseeker module using Opensubtitles API named XML RPC.
-   All the rights are Reserved by the author and modifying and sharing this peice of software is allowed given credit to author.
-   You can read more about the functionalities of this software at: https://github.com/ubdussamad/Subseeker
-   '''
-
 REMOTE_SERVER = "www.opensubtitles.org"
 
 def is_connected(hostname):
@@ -47,13 +42,13 @@ def hashFile(name):
       except(IOError): 
                 return "IOError"
 
-class LoginError(Exception):#Login Failures
+class LoginError(Exception):#Login Faliures
     pass
     
-class URLError(Exception):#Internet Connectivity Failures
+class URLError(Exception):#Internet Connectivity Faliures
     pass
 
-class NoLangMatchError(Exception):#Default language doesn't matches
+class NoLangMatchError(Exception):#Default language dosen't matches
     pass
     
            
@@ -61,6 +56,17 @@ class Settings(object):
     OPENSUBTITLES_SERVER = 'http://api.opensubtitles.org/xml-rpc'
     USER_AGENT = 'TemporaryUserAgent'
     LANGUAGE = 'en'
+    
+def lang_name_from_lang_code(code):
+  with open(os.path.expanduser('~/.subseeker/lang_pack.csv'),'r') as lang_code:
+    lang_code = lang_code.read().split('\n')
+    lang_code = dict( [i.split(',')[:] for i in lang_code if len(i) > 1])
+  try:
+    return(lang_code[code])
+  except:
+    return(code.upper())
+
+            
 class OpenSubtitles(object):
     def __init__(self, language=None, user_agent=None):
         self.language = language or Settings.LANGUAGE
@@ -87,7 +93,7 @@ class OpenSubtitles(object):
         return token
 
     def logout(self):
-        '''Returns True is logout is Ok, otherwise None.
+        '''Returns True is logout is ok, otherwise None.
         '''
         data = self.xmlrpc.LogOut(self.token)
         return '200' in data.get('status')
@@ -118,16 +124,24 @@ try:
 
     size = str(os.path.getsize(full_path))
     data = ost.search_subtitles([{'sublanguageid': 'en', 'moviehash': str(movie_hash), 'moviebytesize': size }])
-
+    ziplink = None
     for i in data:
       if i.get('SubLanguageID') == default_lang:
-            print("I am happening")
             ziplink = i.get('ZipDownloadLink')
             break
-    try:
-      print(ziplink)
-    except:
-      raise NoLangMatchError,("No subtitles matching your default language.")
+
+    if len(data) and not ziplink:
+      from options_diag import *
+      if ext():
+        available_subs = []
+        for n,i in enumerate(data):
+          available_subs.append((str(n),i.get('SubFileName'),lang_name_from_lang_code(i.get('SubLanguageID')),str(i.get('Score')),i.get('ZipDownloadLink')))
+        from selection_panel import *
+        z = run(available_subs)
+        if z is not None:
+          ziplink = available_subs[int(z)][4]
+    if not ziplink:
+      raise NoLangMatchError,("Your default language's sub not found.")
     if ziplink:#Downloding n extracting the subtitle
         url = urlopen(ziplink)
         zip_ref = ZipFile(StringIO(url.read()))
@@ -137,10 +151,10 @@ try:
 except Exception as err:
     print(err)
     f = open('Sorry, We can\'t find a Sub.txt','w')
-    f.write(''' We are deeply sorry for the inconvenience caused! \n
+    f.write(''' We are truely sorry for the inconvinience caused! \n
             \n We tried to get the subtitle for your movie/video:
             \n %s \n\n But had no Luck! \n This can happen due to some of the reasons below:
-            \n * Sub doesn't exists on Opensubtitles.org
+            \n * Sub dosen't exists on Opensubtitles.org
             \n * The movie is new and it's Hash isn't available or linked to the Subtitle.
             \n * Internet Connection problem.
             \n * The video is not popular (A recorded video or A music video).
@@ -149,4 +163,3 @@ except Exception as err:
             \n ||Thanks for using Subseeker ||'''%(full_path.split('/')[-1]))
     f.close()
 ost.logout()
-'''Under CC-SA | Author: Ubdussamad | E-mail: ubdussamad@gmail.com | Ref: Dec 2018'''
