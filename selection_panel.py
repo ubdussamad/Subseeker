@@ -7,8 +7,8 @@ index = None
 class TreeViewFilterWindow(Gtk.Window):
     
     def __init__(self,people):
-        Gtk.Window.__init__(self, title="Subseeker v4")
-
+        Gtk.Window.__init__(self, title="Subseeker V4")
+        self.set_border_width(2)
         #Main list box
         main_list_box = Gtk.ListBox()
         self.add(main_list_box)
@@ -58,10 +58,20 @@ class TreeViewFilterWindow(Gtk.Window):
 
         self.submit_button = Gtk.Button(label="Download")
         self.submit_button.connect("clicked", self.select_handle)
+
+        self.submit_button.set_property("width-request", 10)
+        self.submit_button.set_property("height-request", 5)
+        
         buttons_box.pack_start(self.submit_button, True , True  , 0)
 
+
+
         self.cancel_button = Gtk.Button(label="Cancel")
-        self.cancel_button.connect("clicked", lambda:self.destroy())
+        self.cancel_button.connect("clicked", lambda x:self.destroy())
+
+        self.cancel_button.set_property("width-request", 60)
+        self.cancel_button.set_property("height-request", 20)
+        
         buttons_box.pack_start(self.cancel_button, True , True  , 0)
         
         main_list_box.add(buttons_box)
@@ -84,5 +94,9 @@ def qt(subs):
 def run(subs):
     qt(subs)
     return(index)
-        
+
+
+if __name__ == "__main__":
+    lists = [('a'*30,'b','c','d','e'),('p'*30,'q','r','s','t')]
+    run(lists)
 
