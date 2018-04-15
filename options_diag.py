@@ -2,7 +2,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-class popup(Gtk.MessageDialog):
+class pop_up(Gtk.MessageDialog):
 
     def __init__(self,parent):
         
@@ -10,17 +10,15 @@ class popup(Gtk.MessageDialog):
             Gtk.ButtonsType.YES_NO, "No Subtitles found in your Language.")
         self.format_secondary_text("Would you like to check other languages?")
 
-def ext():
-    dialog = popup(None)
+def question():
+    
+    dialog = pop_up(None) #Dialog window mapped without a parent window triggers warnings.
     response = dialog.run()
-    will = (response == Gtk.ResponseType.YES)
-    '''if response == Gtk.ResponseType.YES:
-        print("QUESTION dialog closed by clicking YES button")
-    elif response == Gtk.ResponseType.NO:
-        print("QUESTION dialog closed by clicking NO button")'''
+    user_will = (response == Gtk.ResponseType.YES) #User clicks Yes
     dialog.destroy()
-    return will
+    return user_will
     
 
 if __name__ == '__main__':
-    ext()
+    question() #While running this directly, the dialog freezes after user input
+               #but when used externally, it behaves normally
