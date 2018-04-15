@@ -61,10 +61,8 @@ def lang_name_from_lang_code(code):
   with open(os.path.expanduser('~/.subseeker/lang_pack.csv'),'r') as lang_code:
     lang_code = lang_code.read().split('\n')
     lang_code = dict( [i.split(',')[:] for i in lang_code if len(i) > 1])
-  try:
-    return(lang_code[code])
-  except:
-    return(code.upper())
+  try:return(lang_code[code])
+  except:return(code.upper())
 
             
 class OpenSubtitles(object):
@@ -104,7 +102,7 @@ class OpenSubtitles(object):
         return self._get_from_data_or_none('data')
 
 
-full_path = sys.argv[1]#,usr,password = sys.argv
+full_path = sys.argv[1]
 f = open(os.path.expanduser('~/.subseeker/usr_config.ini'),'r')
 data = f.read().strip('\n').split('|')
 usr,password,default_lang = data
@@ -132,17 +130,18 @@ try:
 
     if len(data) and not ziplink:
       from options_diag import *
-      if ext():
+      if question():
         available_subs = []
         for n,i in enumerate(data):
-          available_subs.append((str(n),i.get('SubFileName'),lang_name_from_lang_code(i.get('SubLanguageID')),str(i.get('Score')),i.get('ZipDownloadLink')))
+          available_subs.append((str(n),i.get('SubFileName')
+                                 ,lang_name_from_lang_code(i.get('SubLanguageID')),str(i.get('Score')),i.get('ZipDownloadLink')))
         from selection_panel import *
-        z = run(available_subs)
+        z = selection_panel_func(available_subs)
         if z is not None:
           ziplink = available_subs[int(z)][4]
     if not ziplink:
-      raise NoLangMatchError,("Your default language's sub not found.")
-    if ziplink:#Downloding n extracting the subtitle
+      raise NoLangMatchError,("No Subtitles found in your default language.")
+    if ziplink:#Downloading and extracting the subtitle
         url = urlopen(ziplink)
         zip_ref = ZipFile(StringIO(url.read()))
         zip_ref.extractall('/'.join(full_path.split('/')[:-1]))
