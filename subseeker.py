@@ -128,7 +128,7 @@ try:
             ziplink = i.get('ZipDownloadLink')
             break
 
-    if len(data) and not ziplink:
+    if len(data) and ziplink is None:
       from options_diag import *
       if question():
         available_subs = []
@@ -139,8 +139,10 @@ try:
         z = selection_panel_func(available_subs)
         if z is not None:
           ziplink = available_subs[int(z)][4]
-    if not ziplink:
+    if ziplink is None and len(data):
       raise NoLangMatchError,("No Subtitles found in your default language.")
+    elif not len(data):
+      raise IOError,("No subtitles found for the given video in any language.")
     if ziplink:#Downloading and extracting the subtitle
         url = urlopen(ziplink)
         zip_ref = ZipFile(StringIO(url.read()))
