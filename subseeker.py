@@ -123,7 +123,7 @@ try:
     size = str(os.path.getsize(full_path))
     data = ost.search_subtitles([{'sublanguageid': 'en', 'moviehash': str(movie_hash), 'moviebytesize': size ,
                                   'filename':str(full_path.split('/')[-1]), 'query': str(full_path.split('/')[-1].split('.')[:-1])}] )
-    print("Doing Stuff!")
+    print("Status: 1 OK!")
     ziplink = None
     for i in data:
       if i.get('SubLanguageID') == default_lang:
