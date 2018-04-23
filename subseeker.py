@@ -42,10 +42,10 @@ def hashFile(name):
       except(IOError): 
                 return "IOError"
 
-class LoginError(Exception):#Login Faliures
+class LoginError(Exception):#Login Failures
     pass
     
-class URLError(Exception):#Internet Connectivity Faliures
+class URLError(Exception):#Internet Connectivity Failures
     pass
 
 class NoLangMatchError(Exception):#Default language dosen't matches
