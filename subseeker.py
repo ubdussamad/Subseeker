@@ -18,7 +18,7 @@ class config(object):
 class target(object):
   if len(sys.argv) >= 2: media_path = sys.argv[1]
 
-  else: media_path = '/home/samad/Itertools.mp4' #'[Insert Movie Link here to test]' #Change it to your local file to run tests
+  else: media_path = '[Insert Movie Link here to test]' #Change it to your local file to run tests
 
   series = re.findall('(\w\d\d\w\d\d)',media_path)
   media_hash = str(hashFile(media_path))
