@@ -138,7 +138,7 @@ class window(Gtk.Window):
 string = '''
  Subseeker 4V0  \n Installation complete , just one step from here and we're ready to go!
 
- \n * Open Nautilus Action Config Tool for the Search Bar.
+ \n * Open Nautilus Action Config Tool form the Search Bar.
  \n * Select "Tools" from the top toolbar of Nautilus Action Config Tool.
  \n * Select "Import assistant" from the Dropdown Menu.
  \n * A New window will open , Click "Next" in it. , A file selection window appears.
@@ -149,7 +149,7 @@ string = '''
  \n * Delete the extracted Archive to save disk space.
  \n * Delete the "subseeker" folder and the readme file you extracted to save disk space.
  \n\n                        ** Test Installation. **
- \n * Navigate to a video file , In the third last row click "Nautilus Actions" and Then "Get Subs".
+ \n * Navigate to a video file , In the third last row click "Nautilus Actions" and Then "Get Subtitles".
  \n * The Subtitle will be Automatically Downloaded in the same folder as Video.
  \n * Enjoy! '''
 if __name__ == "__main__":
