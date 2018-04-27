@@ -18,16 +18,18 @@ class config(object):
 class target(object):
   if len(sys.argv) >= 2: media_path = sys.argv[1]
 
-  else: media_path = '[Insert Movie Link here to test]' #Change it to your local file to run tests
+  else: media_path = '/home/samad/Silicon-Valley-5x05.mp4'#'[Insert Movie Link here to test]' #Change it to your local file to run tests
 
-  series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+')
+  series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+)',media_path)
+  series = series[0]
   media_hash = str(hashFile(media_path))
   media_size = str(os.path.getsize(media_path))
-    
+
   if series:
-    series = series[0]
     media_name  = ' '.join(media_path.split('/')[-1].replace(series,' ').split('.')[:-1]).strip(' ')
     media_name = ''.join([i if (i not in ['_','.','-']) else ' ' for i in media_name])
+    series = re.findall('(\\d+)',series)
+  
 
 
 
@@ -47,7 +49,7 @@ def main():
         data = ost.search_subtitles([{'sublanguageid': 'en', 'moviehash': target.media_hash, 'moviebytesize': target.media_size }] )
   else:
         data = ost.search_subtitles([{'sublanguageid': 'en','moviebytesize': target.media_size ,'query': target.media_name,
-                                      'season': target.series[1:3] , 'episode': target.series[4:] }])
+                                      'season': target.series[0] , 'episode': target.series[1] }])
         
   ziplink = filter( None, [i.get('ZipDownloadLink') if (i.get('SubLanguageID')==config.default_language) else None for i in data] )
   
