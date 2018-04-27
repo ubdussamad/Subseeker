@@ -20,7 +20,7 @@ class target(object):
 
   else: media_path = '[Insert Movie Link here to test]' #Change it to your local file to run tests
 
-  series = re.findall('(\w\d\d\w\d\d)',media_path)
+  series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+')
   media_hash = str(hashFile(media_path))
   media_size = str(os.path.getsize(media_path))
     
