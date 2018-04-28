@@ -1,29 +1,14 @@
 import os,struct,socket
 from xmlrpclib import ServerProxy, Transport
+
 ''' //////////////////////////////////////////
     This module contains Utility methods for subseeker
     ////////////////////////////////// ''' 
 
 
-
-''' /////////////////////
-    Custom Exceptions
-    /////////////////////'''
-
-class LoginError(Exception):#Login Failures
-    pass
-    
-class URLError(Exception):#Internet Connectivity Failures
-    pass
-
-class NoLangMatchError(Exception):#Default language dosen't matches
-    pass
-
-
 '''  /////////////////////
      Returns the Language name from the obtained Language Codes
      ///////////////////// '''
-
 
 def lang_name_from_lang_code(code):
   with open(os.path.expanduser('~/.subseeker/lang_pack.csv'),'r') as lang_code:
