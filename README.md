@@ -1,26 +1,29 @@
 # Subseeker
+
+ [![Python](https://img.shields.io/badge/Python-2.7%2C%203.6-brightgreen.svg)](http://www.python.org/download/) [![Under](https://img.shields.io/travis/rust-lang/rust.svg)]()
+ 
 Automatic Subtitle Downloading Tool for Nautilus in Ubuntu.
-Uses opensubtitles.org's XMLRPC based API to query and download subtitles.
+Uses Opensubtitles.org's XMLRPC based API to query and download subtitles.
 
-Its frontend is basically a Nautilus-Action Config, that gives a submenu option to download subtitles.
+It's front-end is basically a Nautilus-Action Configration, that gives a submenu option to download subtitles.
 
-The backend is a small python script that generates the video files hash and does a query to the opensubtitles API.
+The backend is a small python script that generates the video file's hash and does a query to the Opensubtitles API.
 
 <b>The Default Environment used is Python2.x as the hashing function isn't very compatible with Python3.x.</b>
 
-If any Subtitle is there related to the video hash, it downloads it automatically and places the subtitle in the same folder as the video.
+If any Subtitle is there related to the video hash, the program downloads it automatically and places the subtitle in the same folder as the video.
 
 Language Support has been added , and the default language is to be selected during the process of installation.
 
 </hr></br>
-<b>Dependencies are:</b>
+# Dependencies are:
 
 <li>Nautilus Action Config Tool </li>
 <b>Note:</b><i> You'll be automatically asked to install it while installing Subseeker. </i>
 </br>
 
 </br></hr>
-<b>Size Information:</b>
+# Size Information:
 <li>Total size including Nautilus Action Config Tool: ~ 14 MegaBytes</li>
 <li>Total size excluding Nautilus Action Config Tool: > 400 KiloBytes </li>
 </br>
@@ -45,12 +48,12 @@ Language Support has been added , and the default language is to be selected dur
 
 <li> A Setup window pops up, Enter your opensubtitle user-name and password there and select your default language.</li>
 
-<li> Once the Partial installation complete , a new read-me will open with futher instructions.</li>
+<li> Once the Partial installation complete , a new read-me will open with further instructions.</li>
 
 </ol>
 
 </hr></br>
-<b>Usage Instructions: </b> </hr></br></hr></br>
+# Usage Instructions: </hr></br></hr></br>
 Just Navigate to any Video and Right Click , You'll See a "Get Subtitle" (Shown In Image Below) Option in the Sub-menu. 
 </br></hr></br></hr>
 
@@ -64,5 +67,5 @@ After Clicking the sub-menu Option a new confirmational window will appear and Y
 
 
 </br></hr></br></hr>
-<b>Feedback:</b>
+# Feedback:
 For feedback or error reporting please E-mail me at: <mailto:ubdussamad@gmail.com>.
