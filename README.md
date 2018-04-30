@@ -15,20 +15,23 @@ If any Subtitle is there related to the video hash, the program downloads it aut
 
 Language Support has been added , and the default language is to be selected during the process of installation.
 
-</hr></br>
 # Dependencies are:
 
 <li>Nautilus Action Config Tool </li>
 <b>Note:</b><i> You'll be automatically asked to install it while installing Subseeker. </i>
 </br>
 
-</br></hr>
+
 # Size Information:
+
 <li>Total size including Nautilus Action Config Tool: ~ 14 MegaBytes</li>
 <li>Total size excluding Nautilus Action Config Tool: > 400 KiloBytes </li>
 </br>
 </br>
-<b>Installation Procedure: </b>
+
+
+# Installation Procedure:
+
 <ol>
 <li> You must have an Opensubtitles Account to use this app.</li>
 
@@ -52,8 +55,7 @@ Language Support has been added , and the default language is to be selected dur
 
 </ol>
 
-</hr></br>
-# Usage Instructions: </hr></br></hr></br>
+# Usage Instructions:
 Just Navigate to any Video and Right Click , You'll See a "Get Subtitle" (Shown In Image Below) Option in the Sub-menu. 
 </br></hr></br></hr>
 
