@@ -18,7 +18,7 @@ class config(object):
 class target(object):
   if len(sys.argv) >= 2: media_path = sys.argv[1]
 
-  else: media_path = '/home/samad/Silicon-Valley-5x05.mp4'#'[Insert Movie Link here to test]' #Change it to your local file to run tests
+  else: media_path = '[Insert Movie Path here to test]' #Change it to your local file to run tests
 
   series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+)',media_path)
   series = series[0]
@@ -42,7 +42,7 @@ def main():
   ost = OpenSubtitles()
 
   if not(ost.login(config.username,config.password)):
-          print("Bad Login, Please check credentials.")
+          print("Bad Login, Please re-install with correct credentials.")
           return(1)
           
   if not target.series:
