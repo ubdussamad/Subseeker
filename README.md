@@ -35,7 +35,7 @@ Language Support has been added , and the default language is to be selected dur
 <ol>
 <li> You must have an Opensubtitles Account to use this app.</li>
 
-<li> Follow : <i>"https://www.opensubtitles.org/en/newuser"</i>   , to register.</li>
+<li> Follow : [this link]("https://www.opensubtitles.org/en/newuser") , to register.</li>
 
 <li> Download or clone the Archived Package to your home folder.</li>
 
