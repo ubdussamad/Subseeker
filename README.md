@@ -1,7 +1,6 @@
 # Subseeker
 
- [![Python](https://img.shields.io/badge/Python-2.7%2C%203.6-brightgreen.svg)](http://www.python.org/download/) [![Under](https://img.shields.io/travis/rust-lang/rust.svg)]()
- 
+ [![Python](https://img.shields.io/badge/Python-2.7%2C%203.6-brightgreen.svg)](http://www.python.org/download/)
 Automatic Subtitle Downloading Tool for Nautilus in Ubuntu.
 Uses Opensubtitles.org's XMLRPC based API to query and download subtitles.
 
