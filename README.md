@@ -5,7 +5,7 @@
 Automatic Subtitle Downloading Tool for Nautilus in Ubuntu.
 Uses Opensubtitles.org's XMLRPC based API to query and download subtitles.
 
-It's front-end is basically a Nautilus-Action Configration, that gives a submenu option to download subtitles.
+It's front-end is basically a Nautilus-Action Configuration, that gives a submenu option to download subtitles.
 
 The backend is a small python script that generates the video file's hash and does a query to the Opensubtitles API.
 
@@ -35,7 +35,7 @@ Language Support has been added , and the default language is to be selected dur
 <ol>
 <li> You must have an Opensubtitles Account to use this app.</li>
 
-<li> Follow : [this link]("https://www.opensubtitles.org/en/newuser") , to register.</li>
+<li> Follow : [this link](https://www.opensubtitles.org/en/newuser) , to register.</li>
 
 <li> Download or clone the Archived Package to your home folder.</li>
 
