@@ -21,14 +21,13 @@ class target(object):
   else: media_path = '[Insert Movie Path here to test]' #Change it to your local file to run tests
 
   series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+)',media_path)
-  series = series[0]
   media_hash = str(hashFile(media_path))
   media_size = str(os.path.getsize(media_path))
 
   if series:
-    media_name  = ' '.join(media_path.split('/')[-1].replace(series,' ').split('.')[:-1]).strip(' ')
+    media_name  = ' '.join(media_path.split('/')[-1].replace(series[0],' ').split('.')[:-1]).strip(' ')
     media_name = ''.join([i if (i not in ['_','.','-']) else ' ' for i in media_name])
-    series = re.findall('(\\d+)',series)
+    series = re.findall('(\\d+)',series[0])
   
 
 
