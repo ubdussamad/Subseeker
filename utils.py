@@ -63,6 +63,7 @@ def is_connected(hostname):
 ''' ////////////////////
     Opensubtitles XML RPC API's Python Implimentaion
     ////////////////////  '''
+
 class Settings(object):
     OPENSUBTITLES_SERVER = 'https://api.opensubtitles.org/xml-rpc'
     USER_AGENT = 'TemporaryUserAgent'

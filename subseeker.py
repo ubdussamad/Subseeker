@@ -86,8 +86,20 @@ def main():
       zip_ref = ZipFile(StringIO(url.read()))
       zip_ref.extractall('/'.join(target.media_path.split('/')[:-1]))
       zip_ref.close()
+      
       print("Subtitle Download Complete.")
       ost.logout()
+      import time
+      try:
+        log = open(os.path.expanduser('~/.subseeker/sub_log.txt'),'a')
+        log.write(str(target.media_path.split('/')[-1]+' | '+time.ctime() +  ' | ' + config.username +'\n\n'))
+        log.flush()
+        log.close()
+      except:
+        log = open(os.path.expanduser('~/.subseeker/sub_log.txt'),'w')
+        log.write(str(target.media_path.split('/')[-1]+' | '+time.ctime() +  ' | ' + config.username +'\n\n'))
+        log.flush()
+        log.close()
       return(0)
     
   return(1)
