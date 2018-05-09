@@ -61,7 +61,7 @@ def is_connected(hostname):
   except:return False
 
 ''' ////////////////////
-    Opensubtitles XML RPC API's Python Implimentaion
+    Opensubtitles XML RPC API Client's Python Implimentaion
     ////////////////////  '''
 
 class Settings(object):
