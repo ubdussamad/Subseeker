@@ -49,20 +49,20 @@ Language Support has been added , and the default language is to be selected dur
 
 <li> Enter 'y' if asked to install Dependencies.(external utility packages.)</li>
 
-<li> A Setup window pops up, Enter your opensubtitle user-name and password there and select your default language.</li>
+<li> A Setup window pops up, enter your opensubtitle user-name and password there and select your default language.</li>
 
-<li> Once the Partial installation complete , a new read-me will open with further instructions.</li>
+<li> Once the partial installation complete , a new read-me will open with further instructions.</li>
 
 </ol>
 
 # Usage Instructions:
-Just Navigate to any Video and Right Click , You'll See a "Get Subtitle" (Shown In Image Below) Option in the Sub-menu. 
+Just navigate to any video and right click , you'll see a "Get Subtitle" (Shown In Image Below) option in the sub-menu. 
 </br></hr></br></hr>
 
 ![Image Showing Submenu Option "Get Subtitles" in Nautilus.](/Screenshots/Nautilus_Submenu_Option.png "Image Showing Submenu Option 'Get Subtitles' in Nautilus.")
 
 </br></hr></br></hr>
-After Clicking the sub-menu Option a new confirmational window will appear and You'll see the subtitles Appear in the Folder.(Shown in Image Below)
+After clicking the sub-menu Option a new confirmational window will appear and you'll see the subtitles appear in the folder.(Shown in Image Below)
 </br></hr><b>Note:</b><i></br></hr> <ul><li>It takes some time to search and download the Subtitles (2-5 Secs) Depending Upon you computer and Internet Speed.</li><li> The Subtitles will only be downloaded if they exist on Opensubtitles Website. </i></li></ul>
 
 ![Image Showing Downloaded Subtitle and confirmation window in Nautilus.](/Screenshots/Downloaded_File_With_confirmation.png "Image Showing Downloaded Subtitle and confirmation window in Nautilus.")
