@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os,sys,re
 from utils import *
+from comparison_statics import compare
 from urllib import urlopen
 from zipfile import ZipFile
 from StringIO import StringIO
@@ -18,11 +19,12 @@ class config(object):
 class target(object):
   if len(sys.argv) >= 2: media_path = sys.argv[1]
 
-  else: media_path = '[Insert Movie Path here to test]' #Change it to your local file to run tests
+  else: media_path = '/home/samad/Videos/movies/Ready.Player.One.2018.V3.720p.HC.HDRip.MkvCage.Com.mkv' #Change it to your local file to run tests
 
   series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+)',media_path)
   media_hash = str(hashFile(media_path))
   media_size = str(os.path.getsize(media_path))
+  media_name  = media_path.split('/')[-1]
 
   if series:
     media_name  = ' '.join(media_path.split('/')[-1].replace(series[0],' ').split('.')[:-1]).strip(' ')
@@ -37,42 +39,48 @@ def main():
   if not(is_connected("www.opensubtitles.org")):
           print("No Internet Connection.")
           return(1)
+  else: print("Internet Connectivity: OK!")
       
   ost = OpenSubtitles()
 
   if not(ost.login(config.username,config.password)):
           print("Bad Login, Please re-install with correct credentials.")
           return(1)
-          
+  else: print("Login Credentials: Passed!")
+
+  ''' LAYER - I '''
   if not target.series:
-        data = ost.search_subtitles([{'sublanguageid': 'en', 'moviehash': target.media_hash, 'moviebytesize': target.media_size }] )
+        data = ost.search_subtitles([{'sublanguageid': 'en', 'moviehash': target.media_hash, 'moviebytesize': target.media_size}] )
+        data = data + ost.search_subtitles([{'sublanguageid': 'en','moviebytesize': target.media_size ,'query': target.media_name}])
   else:
         data = ost.search_subtitles([{'sublanguageid': 'en','moviebytesize': target.media_size ,'query': target.media_name,
                                       'season': target.series[0] , 'episode': target.series[1] }])
-        
+        data = data + ost.search_subtitles([{'sublanguageid': 'en','moviehash': target.media_hash,'moviebytesize': target.media_size}])
+  ''' LAYER - I ENDS '''
+
+  ''' LAYER - II '''
   ziplink = filter( None, [i.get('ZipDownloadLink') if (i.get('SubLanguageID')==config.default_language) else None for i in data] )
   
   if len(data) and not ziplink:
-    
-    from options_diag import *
+      ''' LAYER X ''' 
+      from options_diag import question
 
-    if question():
+      if question():
 
-      available_subs = []
+        available_subs = []
 
-      for n,i in enumerate(data):
+        for n,i in enumerate(data):
 
-        available_subs.append((str(n),i.get('SubFileName')
-        ,lang_name_from_lang_code(i.get('SubLanguageID')),str(i.get('Score')),i.get('ZipDownloadLink')))
+          available_subs.append((str(n),i.get('SubFileName')
+          ,lang_name_from_lang_code(i.get('SubLanguageID')),str(i.get('Score')),i.get('ZipDownloadLink')))
 
-      from selection_panel import *
+        from selection_panel import selection_panel_func
 
-      z = selection_panel_func(available_subs)
+        z = selection_panel_func(available_subs)
 
-      if z is not None:
-        ziplink = available_subs[int(z)][4]
-
-        
+        if z is not None:
+          ziplink = available_subs[int(z)][4]
+          
   if not ziplink and len(data):
     print("No Subtitles found in your default language.")
     return(1)
@@ -80,9 +88,20 @@ def main():
   elif not len(data):
       print("No subtitles found for the given video in any language.")
       return(1)
-
+  ''' LAYER - III (Comapring SubFileName)'''
+  scores = []
+  for i in data:
+    scores.append(compare( i['SubFileName'] , target.media_name ))
+  m =  max(scores)
+  print "Score is: ", m
+  index = scores.index(m)
+  print('No. of Subs: %d'%len(data))
+  ziplink = data[index]['ZipDownloadLink']
+  print 'Download link: ',ziplink ,'\nSubname:', data[index]['SubFileName'] , '\n\nMedia name:', target.media_name
+  ''' lAYER III ENDS'''
+  
   if ziplink:#Downloading and extracting the subtitle
-      url = urlopen(ziplink[0] if type(ziplink) == list else ziplink)
+      url = urlopen(ziplink[index] if type(ziplink) == list else ziplink)
       zip_ref = ZipFile(StringIO(url.read()))
       zip_ref.extractall('/'.join(target.media_path.split('/')[:-1]))
       zip_ref.close()
@@ -100,8 +119,8 @@ def main():
         log.write(str(target.media_path.split('/')[-1]+' | '+time.ctime() +  ' | ' + config.username +'\n\n'))
         log.flush()
         log.close()
+      del time
       return(0)
-    
   return(1)
 
 def apology():

@@ -116,6 +116,7 @@ class window(Gtk.Window):
         call(['cp',cwd+'/selection_panel.py',os.path.expanduser('~')+'/.subseeker/'])
         call(['cp',cwd+'/lang_pack.csv',os.path.expanduser('~')+'/.subseeker/'])
         call(['cp',cwd+'/utils.py',os.path.expanduser('~')+'/.subseeker/'])
+        call(['cp',cwd+'/comparison_statics.py',os.path.expanduser('~')+'/.subseeker/'])
         print("Copying Config Files...")
         time.sleep(2)
         call(['cp',cwd+'/usr_config.ini',os.path.expanduser('~')+'/.subseeker/'])
