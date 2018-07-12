@@ -1,16 +1,34 @@
+#||||||||||||||||||| Comparison Statics
+#Simple Statistical methods for comparing
+#strings for best hit selection.
+#Authors: Mohammed S. Haque , Rita Thomas (Co-author)
+
+#----------Required Declaration-------------
 #This file contains comparison methods
 #which have some minor traces
 #of code that is derived from the
-#Hidden Analysis (TM)  toolkit.
+#Hidden Analysis* GmbH  toolkit.
+#All the derived techniques are DECLASSIFIED
+#for public usage and are FREE to distribute.
+#Read adyybnhc1kge2.onion for more details.
+
 from re import findall
 import math
+import time
 
+def time_wrapper(func):
+    def wrapee(*args,**kwargs):
+        epoch = time.time()
+        obj = func(*args,**kwargs)
+        print('Time delta: %f'%(time.time()-epoch,))
+        return obj
+    return wrapee
 
 def find_dominant_spacer(string):
-    '''Returns the most frequent seprator
-    in the string, if there is no seprator
+    '''Returns the most frequent separator
+    in the string, if there is no separator
     it returns -1.
-    Dominance is calculated by the number of times that seprator has
+    Dominance is calculated by the number of times that separator has
     come up in the target string.'''
     
     sample_seprators = ['\s','[_]','[-]','[.]','[~]']
@@ -38,5 +56,6 @@ def letter_match( string_A , string_B ):
             score+=1
     return score/(((len(a)+len(b))/2.0))
 
+@time_wrapper
 def compare(a,b):
     return(((letter_match(a,b)*4)+(word_match(a,b)*2))/6) 

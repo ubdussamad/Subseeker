@@ -19,16 +19,17 @@ class config(object):
 class target(object):
   if len(sys.argv) >= 2: media_path = sys.argv[1]
 
-  else: media_path = '/home/samad/Videos/movies/Ready.Player.One.2018.V3.720p.HC.HDRip.MkvCage.Com.mkv' #Change it to your local file to run tests
+  else: media_path = '/media/samad/C895-54C9/sa,madmovies/UW Amelie (2001)/Amelie.mkv' #Change it to your local file to run tests
 
   series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+)',media_path)
-  media_hash = str(hashFile(media_path))
-  media_size = str(os.path.getsize(media_path))
-  media_name  = media_path.split('/')[-1]
+  media_hash  = str(hashFile(media_path))
+  media_size  = str(os.path.getsize(media_path))
+  media_name  = media_path.split('/')[-1].split('.')
+  media_name  = '.'.join(media_name[:-1])
 
   if series:
     media_name  = ' '.join(media_path.split('/')[-1].replace(series[0],' ').split('.')[:-1]).strip(' ')
-    media_name = ''.join([i if (i not in ['_','.','-']) else ' ' for i in media_name])
+    media_name  = ''.join([i if (i not in ['_','.','-']) else ' ' for i in media_name])
     series = re.findall('(\\d+)',series[0])
   
 
@@ -91,13 +92,18 @@ def main():
   ''' LAYER - III (Comapring SubFileName)'''
   scores = []
   for i in data:
-    scores.append(compare( i['SubFileName'] , target.media_name ))
+  	lang = i['SubLanguageID'] == config.default_language
+  	scores.append( compare( '.'.join(i['SubFileName'].split('.')[:-1]) ,target.media_name) if lang else 0 )
   m =  max(scores)
-  print "Score is: ", m
   index = scores.index(m)
-  print('No. of Subs: %d'%len(data))
   ziplink = data[index]['ZipDownloadLink']
-  print 'Download link: ',ziplink ,'\nSubname:', data[index]['SubFileName'] , '\n\nMedia name:', target.media_name
+
+  print('No. of Subs found: %d'%len(data))
+  print("Best Sub Score is: %f"%m)
+  print('Sub language: %s'%lang_name_from_lang_code(data[index]['SubLanguageID']))
+  print('Movie Imdb rating: %s'%str(data[index]['MovieImdbRating']))
+  print('Subname: %s\nMedia name: %s'%(data[index]['SubFileName'], target.media_name))
+
   ''' lAYER III ENDS'''
   
   if ziplink:#Downloading and extracting the subtitle
