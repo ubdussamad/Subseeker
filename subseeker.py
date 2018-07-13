@@ -130,7 +130,7 @@ def main():
   return(1)
 
 def apology():
-    f = open('/'.join(target.media_path.split('/')[:-1])+'/Sorry, We can\'t find a Sub.txt','w')
+    f = open('/'.join(target.media_path.split('/')[:-1])+'/Sorry, We didn\'t find any Subtitle.txt','w')
     f.write(''' We are truely sorry for the inconvinience caused! \n
                 \n We tried to get the subtitle for your movie/video:
                 \n %s \n\n But had no Luck! \n This can happen due to some of the reasons below:

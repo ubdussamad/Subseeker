@@ -1,15 +1,16 @@
 #||||||||||||||||||| Comparison Statics
 #Simple Statistical methods for comparing
 #strings for best hit selection.
-#Authors: Mohammed S. Haque , Rita Thomas (Co-author)
+#Authors: Mohammed S. Haque , Steve Aron Jr. , Hemant Arora (Co-author)
 
 #----------Required Declaration-------------
 #This file contains comparison methods
 #which have some minor traces
 #of code that is derived from the
-#Hidden Analysis* GmbH  toolkit.
+#Hidden Analysis toolkit.
 #All the derived techniques are DECLASSIFIED
 #for public usage and are FREE to distribute.
+#Documentation and usage terms are subject to change.
 #Read adyybnhc1kge2.onion for more details.
 
 from re import findall
@@ -34,7 +35,7 @@ def find_dominant_spacer(string):
     sample_seprators = ['\s','[_]','[-]','[.]','[~]']
     seprators = [ findall(j,string.lower()) for j in sample_seprators ]
     valid_seprators = [i for i in seprators if i]
-    valid_seprators = valid_seprators if valid_seprators else [[None],[None]] #Protection
+    valid_seprators = valid_seprators if valid_seprators else [[None],[None]] #Protection Redundancy
     weights = [len(i) for i in valid_seprators]
     max_weight = max(weights)
     dominant_seprator = valid_seprators[weights.index(max_weight)][0]
@@ -58,4 +59,10 @@ def letter_match( string_A , string_B ):
 
 @time_wrapper
 def compare(a,b):
-    return(((letter_match(a,b)*4)+(word_match(a,b)*2))/6) 
+	#The weights can be optimized for subtitle
+	#name comparisons using machine learning methods
+	#and more complex methods (like word match) can be added
+	#to attain human level string comparison. 
+	letter_match_weight = 4
+	word_match_weight = 2
+    return(((letter_match(a,b)*letter_match_weight)+(word_match(a,b)*word_match_weight))/6)
