@@ -9,7 +9,7 @@ if not apt.Cache()['nautilus-actions'].is_installed:
     print("Nautilus Action Tool is not installed, You can install it by typing: \n sudo apt-get install nautilus-actions")
     if str(input("Would you like to?(Y/n):")).lower() == 'y':call(["apt-get", "install", "nautilus-actions"])
     else:
-        print("Can't keep going!")
+        print("Can't keep going!\nTry manual install by using:\n sudo apt-get install nautilus-actions")
         sys.exit(0)
 
 
@@ -61,7 +61,7 @@ class window(Gtk.Window):
         self.switch_row = Gtk.ListBoxRow()
         self.switch_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=10)
         self.switch_row.add(self.switch_box)
-        self.switch_label = Gtk.Label("Search third party sites as well:")
+        self.switch_label = Gtk.Label("Search third party sites:")
         self.switch_entry = Gtk.Switch()
         self.switch_box.pack_start(self.switch_label,1,1,10)
         self.switch_box.pack_start(self.switch_entry,1,1,10)
@@ -72,7 +72,7 @@ class window(Gtk.Window):
         self.lang_row.add(self.lang_box)
         self.lang_label = Gtk.Label("Select Your Default Language:")
         self.lang_combo = Gtk.ComboBoxText()
-        with open('lang_pack.csv','r') as languages:
+        with open('core/lang_pack.csv','r') as languages:
             languages = languages.read().split('\n')
             languages = [i.split(',')[1] for i in languages if len(i) > 1]
         for i,j in enumerate(languages):self.lang_combo.insert(i,str(i),j)
@@ -98,7 +98,7 @@ class window(Gtk.Window):
         self.destroy()
         print("Installation in Progress..")
         print("Processing User Configs.")
-        with open('lang_pack.csv') as lang_code:
+        with open('core/lang_pack.csv') as lang_code:
             lang_code = lang_code.read().split('\n')
             lang_code = dict( [i.split(',')[::-1] for i in lang_code if len(i) > 1])
         username,password,default_lang = [username,password,lang_code[lang]]
@@ -112,11 +112,11 @@ class window(Gtk.Window):
         try:os.mkdir(os.path.expanduser('~')+'/.subseeker/')
         except:print("Directory Already exists!")
         call(['cp',cwd+'/subseeker.py',os.path.expanduser('~')+'/.subseeker/'])
-        call(['cp',cwd+'/options_diag.py',os.path.expanduser('~')+'/.subseeker/'])
-        call(['cp',cwd+'/selection_panel.py',os.path.expanduser('~')+'/.subseeker/'])
-        call(['cp',cwd+'/lang_pack.csv',os.path.expanduser('~')+'/.subseeker/'])
-        call(['cp',cwd+'/utils.py',os.path.expanduser('~')+'/.subseeker/'])
-        call(['cp',cwd+'/comparison_statics.py',os.path.expanduser('~')+'/.subseeker/'])
+        call(['cp',cwd+'/core/options_diag.py',os.path.expanduser('~')+'/.subseeker/'])
+        call(['cp',cwd+'/core/selection_panel.py',os.path.expanduser('~')+'/.subseeker/'])
+        call(['cp',cwd+'/core/lang_pack.csv',os.path.expanduser('~')+'/.subseeker/'])
+        call(['cp',cwd+'/core/utils.py',os.path.expanduser('~')+'/.subseeker/'])
+        call(['cp',cwd+'/core/comparison_statics.py',os.path.expanduser('~')+'/.subseeker/'])
         print("Copying Config Files...")
         time.sleep(2)
         call(['cp',cwd+'/usr_config.ini',os.path.expanduser('~')+'/.subseeker/'])
