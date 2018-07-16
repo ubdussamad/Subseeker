@@ -57,7 +57,6 @@ def letter_match( string_A , string_B ):
             score+=1
     return score/(((len(a)+len(b))/2.0))
 
-@time_wrapper
 def compare(a,b):
 	#The weights can be optimized for subtitle
 	#name comparisons using machine learning methods

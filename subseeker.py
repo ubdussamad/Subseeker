@@ -19,7 +19,7 @@ class config(object):
 class target(object):
   if len(sys.argv) >= 2: media_path = sys.argv[1]
 
-  else: media_path = '/media/samad/C895-54C9/sa,madmovies/UW Amelie (2001)/Amelie.mkv' #Change it to your local file to run tests
+  else: media_path = '/home/samad/Videos/mOVIES/Definitely,Maybe[2008]DvDrip-aXXo/Definitely,Maybe[2008]DvDrip-aXXo.avi' #Change it to your local file to run tests
 
   series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+)',media_path)
   media_hash  = str(hashFile(media_path))
@@ -99,7 +99,7 @@ def main():
   ziplink = data[index]['ZipDownloadLink']
 
   print('No. of Subs found: %d'%len(data))
-  print("Best Sub Score is: %f"%m)
+  print("Best Sub Score is: %s"%(str(m) if m!=1.0 else 'Point Blank HIT!'))
   print('Sub language: %s'%lang_name_from_lang_code(data[index]['SubLanguageID']))
   print('Movie Imdb rating: %s'%str(data[index]['MovieImdbRating']))
   print('Subname: %s\nMedia name: %s'%(data[index]['SubFileName'], target.media_name))
