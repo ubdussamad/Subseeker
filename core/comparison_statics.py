@@ -1,6 +1,6 @@
 #||||||||||||||||||| Comparison Statics
 #Simple Statistical methods for comparing
-#strings for best hit selection.
+#strings (Non Case Sensitive) for best hit selection.
 #Authors: Mohammed S. Haque , Steve Aron Jr. , Hemant Arora (Co-author)
 
 #----------Required Declaration-------------
@@ -64,4 +64,4 @@ def compare(a,b):
 	#to attain human level string comparison. 
 	letter_match_weight = 4
 	word_match_weight = 2
-    return(((letter_match(a,b)*letter_match_weight)+(word_match(a,b)*word_match_weight))/6)
+	return(((letter_match(a,b)*letter_match_weight)+(word_match(a,b)*word_match_weight))/6)
