@@ -103,6 +103,7 @@ def main():
   print('Sub language: %s'%lang_name_from_lang_code(data[index]['SubLanguageID']))
   print('Movie Imdb rating: %s'%str(data[index]['MovieImdbRating']))
   print('Subname: %s\nMedia name: %s'%(data[index]['SubFileName'], target.media_name))
+  print('Subtitles service powered by www.OpenSubtitles.org')
 
   ''' lAYER III ENDS'''
   
