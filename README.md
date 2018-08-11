@@ -1,5 +1,5 @@
 # Subseeker
-<b>Subtitles service powered by:<b>
+<b>Subtitles service powered by:</b>
 
 ![Open Subtitles Logo](http://static.opensubtitles.org/gfx/logo-transparent.png "Open Subtitles Logo")
 
