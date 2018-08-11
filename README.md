@@ -1,7 +1,7 @@
 # Subseeker
 <b>Subtitles service powered by:</b>
 
-![Open Subtitles Logo](http://static.opensubtitles.org/gfx/logo-transparent.png "Open Subtitles Logo")
+![Open Subtitles Logo](http://static.opensubtitles.org/gfx/logo-transparent.png "www.OpenSubtitles.org")
 
  [![Python](https://img.shields.io/badge/Python-2.7%2C%203.6-brightgreen.svg)](http://www.python.org/download/)
  
