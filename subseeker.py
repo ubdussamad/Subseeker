@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os,sys,re
+from time import sleep
 from utils import *
 from comparison_statics import compare
 from urllib import urlopen
@@ -48,7 +49,7 @@ def main():
           print("Bad Login, Please re-install with correct credentials.")
           return(1)
   else: print("Login Credentials: Passed!")
-
+  sleep(0.5)
   ''' LAYER - I '''
   if not target.series:
         data = ost.search_subtitles([{'sublanguageid': 'en', 'moviehash': target.media_hash, 'moviebytesize': target.media_size}] )
