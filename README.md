@@ -70,6 +70,8 @@ After clicking the sub-menu Option a new confirmational window will appear and y
 
 ![Image Showing Downloaded Subtitle and confirmation window in Nautilus.](/Screenshots/Downloaded_File_With_confirmation.png "Image Showing Downloaded Subtitle and confirmation window in Nautilus.")
 
+# Thanks
+Thanks to OpenSubtitles.org for the backend.
 
 </br></hr></br></hr>
 # Feedback:
