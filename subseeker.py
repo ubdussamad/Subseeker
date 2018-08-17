@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os,sys,re
+import os,sys,re,traceback
 from time import sleep
 from utils import *
 from comparison_statics import compare
@@ -13,14 +13,19 @@ class config(object):
   config_file = config_file_object.read()
   config_file_object.close()
   config_data = config_file.strip('\n').split('|')
+  log_file_object = open(os.path.expanduser('~/.subseeker/sub_log.txt'),'r')
+  log_file = log_file_object.read()
+  log_file_object.close()
+  log = ['.'.join(i.split('|')[0].strip(' ').split('.')[:-1]) for i in log_file.split('\n') if i]
   username,password,default_language = config_data
+
 
 
 
 class target(object):
   if len(sys.argv) >= 2: media_path = sys.argv[1]
 
-  else: media_path = '/home/samad/Videos/mOVIES/Definitely,Maybe[2008]DvDrip-aXXo/Definitely,Maybe[2008]DvDrip-aXXo.avi' #Change it to your local file to run tests
+  else: media_path = '/home/samad/Videos/Movies/The.Imitation.Game.2014.720p.BluRay.x264.YIFY.mp4' #Change it to your local file to run tests
 
   series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+)',media_path)
   media_hash  = str(hashFile(media_path))
@@ -36,20 +41,23 @@ class target(object):
 
 
 
-def main():
+def main(ost):
   
   if not(is_connected("www.opensubtitles.org")):
           print("No Internet Connection.")
           return(1)
   else: print("Internet Connectivity: OK!")
-      
-  ost = OpenSubtitles()
+  fresh = 1
+  if target.media_name in  config.log:
+  	fresh = 0
+
 
   if not(ost.login(config.username,config.password)):
           print("Bad Login, Please re-install with correct credentials.")
           return(1)
   else: print("Login Credentials: Passed!")
-  sleep(0.5)
+  sleep(1)
+  
   ''' LAYER - I '''
   if not target.series:
         data = ost.search_subtitles([{'sublanguageid': 'en', 'moviehash': target.media_hash, 'moviebytesize': target.media_size}] )
@@ -63,13 +71,10 @@ def main():
   ''' LAYER - II '''
   ziplink = filter( None, [i.get('ZipDownloadLink') if (i.get('SubLanguageID')==config.default_language) else None for i in data] )
   
-  if len(data) and not ziplink:
-      ''' LAYER X ''' 
-      from options_diag import question
-
-      if question():
-
-        available_subs = []
+  if len(data) and (not ziplink or not fresh):
+  	from options_diag import question
+  	if question(["You are downloading the same sub second time.","Would you like to select Subtitle manually?"] if not fresh else ["No Subtitles found in your Language.","Would you like to check other languages?"] ):
+  		available_subs = []
 
         for n,i in enumerate(data):
 
@@ -106,7 +111,7 @@ def main():
   print('Subname: %s\nMedia name: %s'%(data[index]['SubFileName'], target.media_name))
   print('Subtitles service powered by www.OpenSubtitles.org')
 
-  ''' lAYER III ENDS'''
+  ''' LAYER III ENDS'''
   
   if ziplink:#Downloading and extracting the subtitle
       url = urlopen(ziplink[index] if type(ziplink) == list else ziplink)
@@ -147,5 +152,18 @@ def apology():
 
 
 if __name__ == "__main__":
-  if main():
-    apology()
+	ost = OpenSubtitles()
+	try:
+		if main(ost):
+			apology()
+			ost.logout()
+		else:
+			ost.logout()
+	except: #Even in the worst case scenario it'll atleast logout.
+		traceback.print_exc()
+		try:
+			print 'Logging Out after faliure.'
+			ost.logout()
+			print 'Logged out'
+		except:
+			print ' Failed to even log out'

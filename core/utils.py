@@ -65,9 +65,9 @@ def is_connected(hostname):
     ////////////////////  '''
 
 class Settings(object):
-    OPENSUBTITLES_SERVER = 'https://api.opensubtitles.org/xml-rpc'
-    USER_AGENT = 'TemporaryUserAgent'
-    LANGUAGE = 'en'
+    OPENSUBTITLES_SERVER = 'http://api.opensubtitles.org/xml-rpc'
+    USER_AGENT = 'subseeker_v7'
+    LANGUAGE = 'eng'
 
 class OpenSubtitles(object):
     def __init__(self, language=None, user_agent=None):
