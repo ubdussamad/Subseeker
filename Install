@@ -122,6 +122,11 @@ class window(Gtk.Window):
         call(['cp',cwd+'/usr_config.ini',os.path.expanduser('~')+'/.subseeker/'])
         print("Copying  Files:OK!")
         time.sleep(2)
+        print("Installing Nautilus Extentions...")
+        try:os.mkdir(os.path.expanduser('~')+'/.local/share/nautilus/scripts/')
+        except:pass
+        call(['cp',cwd+'/core/Get_Subtitles',os.path.expanduser('~')+'/.local/share/nautilus/scripts/'])
+        call(['chmod','+x',os.path.expanduser('~')+'/.local/share/nautilus/scripts/Get_Subtitles'])
         print("Installation completed, readme opened, You should close the terminal window.")
         self.launch_readme()
         
