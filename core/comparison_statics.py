@@ -5,13 +5,14 @@
 
 #----------Required Declaration-------------
 #This file contains comparison methods
-#which have some minor traces
-#of code that is derived from the
-#Hidden Analysis toolkit.
+#which have minor traces of code that 
+#is derived or inspired from the
+#Hidden Analysis toolkit's source code.
 #All the derived techniques are DECLASSIFIED
-#for public usage and are FREE to distribute.
+#for public usage and are FREE to distribute
+#given the user adds this documentaion atop the media.
 #Documentation and usage terms are subject to change.
-#Read adyybnhc1kge2.onion for more details.
+#Read adyybnhc1kge2b.onion for more details.
 
 from re import findall
 import math

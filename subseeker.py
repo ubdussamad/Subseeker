@@ -70,7 +70,7 @@ def main(ost):
 
   ''' LAYER - II '''
   ziplink = filter( None, [i.get('ZipDownloadLink') if (i.get('SubLanguageID')==config.default_language) else None for i in data] )
-  
+  chosen = False
   if len(data) and (not ziplink or not fresh):
   	from options_diag import question
   	if question(["You are downloading the same sub second time.","Would you like to select Subtitle manually?"] if not fresh else ["No Subtitles found in your Language.","Would you like to check other languages?"] ):
@@ -84,9 +84,10 @@ def main(ost):
         from selection_panel import selection_panel_func
 
         z = selection_panel_func(available_subs)
-
         if z is not None:
           ziplink = available_subs[int(z)][4]
+          chosen = True
+
           
   if not ziplink and len(data):
     print("No Subtitles found in your default language.")
@@ -102,7 +103,7 @@ def main(ost):
   	scores.append( compare( '.'.join(i['SubFileName'].split('.')[:-1]) ,target.media_name) if lang else 0 )
   m =  max(scores)
   index = scores.index(m)
-  ziplink = data[index]['ZipDownloadLink']
+  ziplink = data[index]['ZipDownloadLink'] if not chosen else ziplink
 
   print('No. of Subs found: %d'%len(data))
   print("Best Sub Score is: %s"%(str(m) if m!=1.0 else 'Point Blank HIT!'))
