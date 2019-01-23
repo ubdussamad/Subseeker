@@ -18,10 +18,10 @@ If any Subtitle is there related to the video hash, the program downloads it aut
 
 Language Support has been added , and the default language is to be selected during the process of installation.
 
-# Dependencies are:
+# Dependencies (Optional):
 
 <li>Nautilus Action Config Tool </li>
-<b>Note:</b><i> You'll be automatically asked to install it while installing Subseeker. </i>
+<b>Note:</b><i> You'll be automatically asked to install this optional dependency while installing Subseeker. </i>
 </br>
 
 
