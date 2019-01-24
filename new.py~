@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+import os,sys,re,traceback
+from time import sleep # *
+from utils import *
+from comparison_statics import compare
+from urllib import urlopen
+from zipfile import ZipFile
+from StringIO import StringIO
+
+class config(object):
+    
+    #Suite for reading user credential config file.
+    config_file_object = open(os.path.expanduser('~/.subseeker/usr_config.ini'),'r')
+    config_file = config_file_object.read()
+    config_file_object.close()
+    config_data = config_file.strip('\n').split('|')
+    username,password,default_language = config_data
+
+    #Suite for reading logfile used to check for re-downloading of sub.
+    log_file_path = os.path.expanduser('~/.subseeker/sub_log.txt')
+
+    if os.path.isfile ( log_file_path ): #If the file exists.
+        log_file_object = open( log_file_path ,'r')
+        log_file = log_file_object.read()
+        log_file_object.close()
+        log = ['.'.join(i.split('|')[0].strip(' ').split('.')[:-1]) for i in log_file.split('\n') if i]
+    else: # IF the installation is new and file dosen't exist.
+        log = []
