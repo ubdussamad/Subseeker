@@ -31,7 +31,7 @@ class config(object):
 
 
 class target(object):
-    if len(sys.argv) >= 2: media_path = sys.argv[1]
+    if len(sys.argv) >= 2: media_path = sys.argv[1].strip('\n')
 
     #The media path defaults to succeeding path for debugging.
     else: media_path = '/media/samad/01CDE561CCAC6150/Movies/The.Imitation.Game.2014.720p.BluRay.x264.YIFY.mp4'
@@ -49,6 +49,7 @@ class target(object):
 
 def main(ost):
     if not(is_connected("www.opensubtitles.org")):
+        print("Subtitle Download Failed. :(")
         print("No Internet Connection.")
         return(1)
     else: print("Internet Connectivity: OK!")
@@ -57,6 +58,7 @@ def main(ost):
     fresh = False if target.media_name in  config.log else True
 
     if not(ost.login(config.username,config.password)):
+        print("Subtitle Download Failed. :(")
         print("Bad Login, Please re-install with correct credentials.")
         return(1)
     else: print("Login Credentials: Passed!")
@@ -72,6 +74,7 @@ def main(ost):
 
     # If there are no Subs available.
     if not(len(data)):
+        print("Subtitle Download Failed. :(")
         print("No Subtitle found in any Language for the Media.")
         return(1)
 
@@ -91,8 +94,11 @@ def main(ost):
                         potential_subs = [data[int(z)]] # Now ziplink has only one selected value
                         chosen = True
                 else:
+                    print("Subtitle Download Failed. :(")
                     print("An Unexpected Error Occured, Code: 0x1")
+                    return(1)
         else:
+            print("Subtitle Download Failed. :(")
             print("Sorry, nothing can be done from this end now.")
             return(1)
         
@@ -108,8 +114,11 @@ def main(ost):
                         potential_subs = [data[int(z)]] # Now ziplink has only one selected value
                         chosen = True
                 else:
+                    print("Subtitle Download Failed. :(")
                     print("An Unexpected Error Occured, Code: 0x2")
+                    return(1)
         else:
+            print("Subtitle Download Failed. :(")
             print("Sorry, nothing can be done from this end now.")
             return(1)
 
@@ -121,20 +130,19 @@ def main(ost):
     index = scores.index(m)
     ziplink = potential_subs[index]['ZipDownloadLink']
 
-    print('No. of Subs found: %d'%len(data))
-    print("Best Sub Score is: %s"%  (str(m) if m!=1.0 else 'Point Blank HIT!') if not chosen else ("Manually Selected.") )
-    print('Sub language: %s'%lang_name_from_lang_code( potential_subs[index]['SubLanguageID'] ) )
-    print('Movie Name: %s | Year: %s'%(str( potential_subs[index]['MovieName']) , potential_subs[index]['MovieYear'] ))
-    print('Movie Imdb rating: %s'%str( potential_subs[index]['MovieImdbRating']))
-    print('Subname: %s\nMedia name: %s'%( potential_subs[index]['SubFileName'], target.media_name))
-    print('Subtitles service powered by www.OpenSubtitles.org')
-
     if ziplink:#Downloading and extracting the subtitle
           url = urlopen(ziplink[index] if type(ziplink) == list else ziplink)
           zip_ref = ZipFile(StringIO(url.read()))
           zip_ref.extractall('/'.join(target.media_path.split('/')[:-1]))
           zip_ref.close()
-          print("Subtitle Download Complete.")
+          print("No. of Subs found: %d"%len(data))
+          print("Best Sub Score is: %s"%  (str(m) if m!=1.0 else 'Point Blank HIT!') if not chosen else ("Manually Selected.") )
+          print('Sub language: %s'%lang_name_from_lang_code( potential_subs[index]['SubLanguageID'] ) )
+          print('Movie Name: %s | Year: %s'%(str( potential_subs[index]['MovieName']) , potential_subs[index]['MovieYear'] ))
+          print('Movie Imdb rating: %s'%str( potential_subs[index]['MovieImdbRating']))
+          print('Subname: %s\nMedia name: %s'%( potential_subs[index]['SubFileName'], target.media_name))
+          print('Subtitles service powered by www.OpenSubtitles.org')
+          print("\nSubtitle Download Complete.!\n")
           ost.logout()
           import time
           try:
