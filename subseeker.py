@@ -12,11 +12,14 @@ class config(object):
   config_file_object = open(os.path.expanduser('~/.subseeker/usr_config.ini'),'r')
   config_file = config_file_object.read()
   config_file_object.close()
-  config_data = config_file.strip('\n').split('|')
-  log_file_object = open(os.path.expanduser('~/.subseeker/sub_log.txt'),'r')
-  log_file = log_file_object.read()
-  log_file_object.close()
-  log = ['.'.join(i.split('|')[0].strip(' ').split('.')[:-1]) for i in log_file.split('\n') if i]
+  try:
+    config_data = config_file.strip('\n').split('|')
+    log_file_object = open(os.path.expanduser('~/.subseeker/sub_log.txt'),'r')
+    log_file = log_file_object.read()
+    log_file_object.close()
+    log = ['.'.join(i.split('|')[0].strip(' ').split('.')[:-1]) for i in log_file.split('\n') if i]
+  except:
+    log  = []
   username,password,default_language = config_data
 
 
@@ -25,7 +28,7 @@ class config(object):
 class target(object):
   if len(sys.argv) >= 2: media_path = sys.argv[1]
 
-  else: media_path = '/home/samad/Videos/Movies/The.Imitation.Game.2014.720p.BluRay.x264.YIFY.mp4' #Change it to your local file to run tests
+  else: media_path = '/media/samad/01CDE561CCAC6150/Movies/The.Imitation.Game.2014.720p.BluRay.x264.YIFY.mp4' #Change it to your local file to r
 
   series = re.findall('(\w\d\d\w\d\d)',media_path) or re.findall('(\\d+[x]\\d+)',media_path)
   media_hash  = str(hashFile(media_path))
@@ -69,6 +72,7 @@ def main(ost):
   ''' LAYER - I ENDS '''
 
   ''' LAYER - II '''
+  z = int()
   ziplink = filter( None, [i.get('ZipDownloadLink') if (i.get('SubLanguageID')==config.default_language) else None for i in data] )
   chosen = False
   if len(data) and (not ziplink or not fresh):
@@ -106,10 +110,10 @@ def main(ost):
   ziplink = data[index]['ZipDownloadLink'] if not chosen else ziplink
 
   print('No. of Subs found: %d'%len(data))
-  print("Best Sub Score is: %s"%(str(m) if m!=1.0 else 'Point Blank HIT!'))
-  print('Sub language: %s'%lang_name_from_lang_code(data[index]['SubLanguageID']))
+  print("Best Sub Score is: %s"%  (str(m) if m!=1.0 else 'Point Blank HIT!') if not chosen else ("Manually Selected.") )
+  print('Sub language: %s'%lang_name_from_lang_code(data[int(index) if not chosen else int(z)]['SubLanguageID']))
   print('Movie Imdb rating: %s'%str(data[index]['MovieImdbRating']))
-  print('Subname: %s\nMedia name: %s'%(data[index]['SubFileName'], target.media_name))
+  print('Subname: %s\nMedia name: %s'%( data[int(index) if not chosen else int(z)]['SubFileName'], target.media_name))
   print('Subtitles service powered by www.OpenSubtitles.org')
 
   ''' LAYER III ENDS'''

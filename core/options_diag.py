@@ -4,15 +4,15 @@ from gi.repository import Gtk
 #This is a test text for git integration
 class pop_up(Gtk.MessageDialog):
 
-    def __init__(self,parent):
+    def __init__(self,parent,arr):
 
         Gtk.MessageDialog.__init__(self,parent,0, Gtk.MessageType.QUESTION,
-            Gtk.ButtonsType.YES_NO, "No Subtitles found in your Language.")
-        self.format_secondary_text("Would you like to check other languages?")
+            Gtk.ButtonsType.YES_NO, arr[0])
+        self.format_secondary_text(arr[1])
 
-def question():
+def question(arr):
 
-    dialog = pop_up(None) #Dialog window mapped without a parent window triggers warnings.
+    dialog = pop_up(None , arr = arr) #Dialog window mapped without a parent window triggers warnings.
     response = dialog.run()
     user_will = (response == Gtk.ResponseType.YES) #User clicks Yes
     dialog.destroy()
