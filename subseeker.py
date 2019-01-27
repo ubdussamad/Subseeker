@@ -21,6 +21,7 @@ class config(object):
     log_file_path = os.path.expanduser('~/.subseeker/sub_log.txt')
 
     if os.path.isfile ( log_file_path ): #If the file exists.
+        print("Log file exists!")
         log_file_object = open( log_file_path ,'r')
         log_file = log_file_object.read()
         log_file_object.close()
@@ -55,7 +56,9 @@ def main(ost):
     else: print("Internet Connectivity: OK!")
 
     #Checks if user is downloading the sub or not.
-    fresh = False if target.media_name in  config.log else True
+    fresh = True
+    if str(target.media_path.split('/')[-1].split('.')[0]) in config.log :
+        fresh = False
 
     if not(ost.login(config.username,config.password)):
         print("Subtitle Download Failed. :(")
@@ -150,6 +153,7 @@ def main(ost):
               log.write(str(target.media_path.split('/')[-1]+' | '+time.ctime() +  ' | ' + config.username +'\n\n'))
               log.flush()
               log.close()
+              print("Logging!")
               return(0)
           except:
               log = open(os.path.expanduser('~/.subseeker/sub_log.txt'),'w')
