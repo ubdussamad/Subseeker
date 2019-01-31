@@ -57,7 +57,7 @@ def main(ost):
 
     #Checks if user is downloading the sub or not.
     fresh = True
-    if str(target.media_path.split('/')[-1].split('.')[0]) in config.log :
+    if str('.'.join(target.media_path.split('/')[-1].split('.')[:-1])) in config.log :
         fresh = False
 
     if not(ost.login(config.username,config.password)):
