@@ -5,12 +5,12 @@ from gi.repository import Gtk
 from subprocess import (call,Popen)
 
 
-if not apt.Cache()['nautilus-actions'].is_installed:
-    print("Nautilus Action Tool is not installed, You can install it by typing: \n sudo apt-get install nautilus-actions")
-    if str(input("Would you like to?(Y/n):")).lower() == 'y':call(["apt-get", "install", "nautilus-actions"])
-    else:
-        print("Can't keep going!\nTry manual install by using:\n sudo apt-get install nautilus-actions")
-        sys.exit(0)
+# if not apt.Cache()['nautilus-actions'].is_installed:
+#     print("Nautilus Action Tool is not installed, You can install it by typing: \n sudo apt-get install nautilus-actions")
+#     if str(input("Would you like to?(Y/n):")).lower() == 'y':call(["apt-get", "install", "nautilus-actions"])
+#     else:
+#         print("Can't keep going!\nTry manual install by using:\n sudo apt-get install nautilus-actions")
+#         sys.exit(0)
 
 
 class window(Gtk.Window):
